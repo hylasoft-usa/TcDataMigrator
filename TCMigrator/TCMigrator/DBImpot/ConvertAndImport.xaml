@@ -1,0 +1,47 @@
+﻿<Page x:Class="TCMigrator.DBImpot.ConvertAndImport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator.DBImpot"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConvertAndImport">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC User" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Group" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Password" VerticalAlignment="Center" TextAlignment="Right"/>
+            <Button Content="Import" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" VerticalAlignment="Center" Click="Import" Style="{StaticResource EngGreenBtn}" />
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="User"/>
+            <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="Group"/>
+            <PasswordBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" x:Name="Password"/>
+        </Grid>
+        <GroupBox Header="Output" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="1" Margin="5" Grid.Row="1" Grid.RowSpan="2">
+            <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" x:Name="Viewer" HorizontalScrollBarVisibility="Visible">
+                <TextBlock x:Name="Output" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"></TextBlock>
+            </ScrollViewer>
+        </GroupBox>
+
+    </Grid>
+</Page>

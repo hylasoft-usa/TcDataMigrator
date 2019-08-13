@@ -1,0 +1,63 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TCMigrator.Properties" GeneratedClassName="ImportSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SOURCE_SITE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">-226367500</Value>
+    </Setting>
+    <Setting Name="ENCODING" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ascii</Value>
+    </Setting>
+    <Setting Name="GMS_TCXML_STRING_SEPERATOR" Type="System.Char" Scope="Application">
+      <Value Profile="(Default)">,</Value>
+    </Setting>
+    <Setting Name="IMPORT_GROUP_BY" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Item</Value>
+    </Setting>
+    <Setting Name="DEFAULT_ISLAND_SIZE" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">6000</Value>
+    </Setting>
+    <Setting Name="LOCAL_TIMEZONE_OFFSET_HOURS" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-5</Value>
+    </Setting>
+    <Setting Name="BOMVIEW_TYPE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BOMView</Value>
+    </Setting>
+    <Setting Name="BOMVEIW_REVISION_TYPE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BOMView Revision</Value>
+    </Setting>
+    <Setting Name="CSV_SEPARATOR" Type="System.Char" Scope="Application">
+      <Value Profile="(Default)">|</Value>
+    </Setting>
+    <Setting Name="CSV_QUOTATION" Type="System.Char" Scope="Application">
+      <Value Profile="(Default)">"</Value>
+    </Setting>
+    <Setting Name="CSV_ESCAPE" Type="System.Char" Scope="Application">
+      <Value Profile="(Default)">"</Value>
+    </Setting>
+    <Setting Name="SAVE_GSID_OUT" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LOV_VALIDATE" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BVR_PERCISE" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SKIP_EXISTING" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DEFAULT_SKIP_EXISTING_TYPE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Item</Value>
+    </Setting>
+    <Setting Name="DEFAULT_GROUP_ITEMS" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DEFAULT_GROUP_ITEMS_TYPE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Item</Value>
+    </Setting>
+    <Setting Name="DEFAULT_USE_LOCAL_TIME" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

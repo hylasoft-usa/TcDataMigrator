@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TCMigrator.Properties" GeneratedClassName="Database">
+  <Profiles />
+  <Settings>
+    <Setting Name="IsMSSQL" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IsOracle" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UseWindowsAuth" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQLServerAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TC12CWDEV\TC</Value>
+    </Setting>
+    <Setting Name="DatabaseName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dm</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLServerIntegratedConString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server={0};Initial Catalog={1};Integrated Security=true;</Value>
+    </Setting>
+    <Setting Name="SQLServerSqlAuth" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server={0};Initial Catalog={1};User Id={2};Password={3};</Value>
+    </Setting>
+    <Setting Name="OracleConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST = {0})(PORT = {1})))(CONNECT_DATA =(SERVICE_NAME = {2})));User ID={3};Password={4};</Value>
+    </Setting>
+    <Setting Name="OracleIP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="OraclePort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1521</Value>
+    </Setting>
+    <Setting Name="OracleServiceName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mytestdb.orcl.localdomain</Value>
+    </Setting>
+    <Setting Name="OracleUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SYSTEM</Value>
+    </Setting>
+    <Setting Name="OracleSchema" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OraclePassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Hyla1234$%</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TCMigrator" GeneratedClassName="LogSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LOG_LEVEL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">VERBOSE</Value>
+    </Setting>
+    <Setting Name="LOG_PATH_BASE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\EngineeringUSA\Logs\</Value>
+    </Setting>
+    <Setting Name="EXECUTION_LOG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ExecutionLog.txt</Value>
+    </Setting>
+    <Setting Name="ERROR_LOG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ErrorLog.txt</Value>
+    </Setting>
+    <Setting Name="DATA_LOG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DataLog.txt</Value>
+    </Setting>
+    <Setting Name="LOG_LOG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogLog.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A915CFC1-1C4C-46C3-8B0B-3A802157265C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TCMigrator</RootNamespace>
+    <AssemblyName>TCMigrator</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.3.1\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.AeroLite" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DB\DBProvider.cs" />
+    <Compile Include="Enums\EncodingType.cs" />
+    <Compile Include="Helpers\PropertyHelper.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\LogSettings.cs" />
+    <Compile Include="Logging\LogType.cs" />
+    <Compile Include="Mediators\CSV2TCXMLMediator.xaml.cs">
+      <DependentUpon>CSV2TCXMLMediator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mediators\Db2CsvMediator.xaml.cs">
+      <DependentUpon>Db2CsvMediator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\LogSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>LogSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ConvertConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConvertConfig.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CSV\GenericCsv.cs" />
+    <Compile Include="DBImpot\ConvertAndImport.xaml.cs">
+      <DependentUpon>ConvertAndImport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBImpot\DataSelect.xaml.cs">
+      <DependentUpon>DataSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBImpot\ImportOptions.xaml.cs">
+      <DependentUpon>ImportOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBImpot\ManualHeaders.xaml.cs">
+      <DependentUpon>ManualHeaders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBImpot\Transform.xaml.cs">
+      <DependentUpon>Transform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DB\OracleConnection.cs" />
+    <Compile Include="DB\SQLConnection.cs" />
+    <Compile Include="Interfaces\ICsv.cs" />
+    <Compile Include="Interfaces\IDbConnection.cs" />
+    <Compile Include="Properties\CommandLineText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommandLineText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\CSVSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>CSVSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Database.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Database.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ImportSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ImportSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\TeamcenterSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>TeamcenterSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\CSVSettings.xaml.cs">
+      <DependentUpon>CSVSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\DBSettings.xaml.cs">
+      <DependentUpon>DBSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ImportSettings.xaml.cs">
+      <DependentUpon>ImportSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\LoggerSettings.xaml.cs">
+      <DependentUpon>LoggerSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsGenerator.cs" />
+    <Compile Include="Settings\TCSettings.xaml.cs">
+      <DependentUpon>TCSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Standalone\CSV2TCXML\Complete.xaml.cs">
+      <DependentUpon>Complete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Standalone\CSV2TCXML\Convert.xaml.cs">
+      <DependentUpon>Convert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Standalone\DB2CSV\DB2CSV.xaml.cs">
+      <DependentUpon>DB2CSV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Standalone\CSV2TCXML\Csv2Tcxml.xaml.cs">
+      <DependentUpon>Csv2Tcxml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Standalone\TCXMXLImport\ManualTCXMLImport.xaml.cs">
+      <DependentUpon>ManualTCXMLImport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teamcenter\Converter.cs" />
+    <Compile Include="Teamcenter\CSVConverterOptions.cs" />
+    <Compile Include="Teamcenter\TCCmd.cs" />
+    <Compile Include="Transform\GenericTransformer.cs" />
+    <Compile Include="Transform\TransformDescriptor.cs" />
+    <Compile Include="Transform\TransformOptions.cs" />
+    <Compile Include="VisualUtilities\ButtonGenerator.cs" />
+    <Compile Include="VisualUtilities\GridGenerator.cs" />
+    <Compile Include="VisualUtilities\TextBlockGenerator.cs" />
+    <Compile Include="VisualUtilities\TextBoxGenerator.cs" />
+    <Page Include="DBImpot\ConvertAndImport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\DataSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\ImportOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\ManualHeaders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\Transform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\ImportData.cs" />
+    <Compile Include="Enums\TransformType.cs" />
+    <Compile Include="Interfaces\IPageMediator.cs" />
+    <Compile Include="Interfaces\ITransformer.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Mediators\CSV2TCXMLMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mediators\Db2CsvMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mediators\DBMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\CSVSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\DBSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\ImportSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\LoggerSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\TCSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Standalone\CSV2TCXML\Complete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Standalone\CSV2TCXML\Convert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Standalone\DB2CSV\DB2CSV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Standalone\CSV2TCXML\Csv2Tcxml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Standalone\TCXMXLImport\ManualTCXMLImport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mediators\DBMediator.xaml.cs">
+      <DependentUpon>DBMediator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\ConvertConfig.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConvertConfig.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\CommandLineText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommandLineText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\LogSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>LogSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\CSVSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CSVSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Database.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\ImportSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ImportSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\TeamcenterSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>TeamcenterSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\logo1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

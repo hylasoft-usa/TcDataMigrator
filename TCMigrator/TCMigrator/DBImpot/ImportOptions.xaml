@@ -1,0 +1,96 @@
+﻿<Page x:Class="TCMigrator.DBImpot.Import"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator.DBImpot"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="Import">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="CSV Path:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Row="1" Margin="5" TextWrapping="Wrap" Text="Encoding:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Margin="5" TextWrapping="Wrap" Text="CSV Separator:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Row="3" Margin="5" TextWrapping="Wrap" Text="CSV Quotation:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Row="4" Margin="5" TextWrapping="Wrap" Text="CSV Escape:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Row="5" Margin="5" TextWrapping="Wrap" Text="Source Site:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="3" Margin="5" TextWrapping="Wrap" Text="TCXML VLA Separator:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Column="2" Margin="5" TextWrapping="Wrap" Text="Island Size:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="1" Margin="5" TextWrapping="Wrap" Text="BOM View Type:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="2" Margin="5" TextWrapping="Wrap" Text="BOM View Revision Type:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <Grid Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="6" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CheckBox Content="Save GSID Map?" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" x:Name="SaveGSID" Style="{StaticResource RoundedTextbox}"/>
+                <CheckBox Content="Use BVR Percise?" Grid.Column="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" x:Name="UseBVRPercise" Style="{StaticResource RoundedTextbox}"/>
+                <CheckBox Content="Validate LOVs?" Grid.Column="2" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" x:Name="ValidateLovs" Style="{StaticResource RoundedTextbox}" />
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <CheckBox Content="Skip Existing?" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="SkipExists" Style="{DynamicResource RoundedTextbox}"/>
+                <CheckBox Content="Group By Type?" Grid.Column="1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource RoundedTextbox}" VerticalAlignment="Center" x:Name="GroupBy"/>
+                <CheckBox Content="Use Local Time?" Grid.Row="2" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="UseLocal" Style="{StaticResource RoundedTextbox}"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SkipExistingType"/>
+                <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="GroupByType"/>
+                <TextBox Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="LocalTimeOffset"/>
+            </Grid>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvSep"/>
+            <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvQuote"/>
+            <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvEscape"/>
+            <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SourceSite"/>
+            <TextBox  Grid.Column="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="IslandSize"/>
+            <TextBox  Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewType"/>
+            <TextBox  Grid.Column="3" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewRevisionType"/>
+            <TextBox  Grid.Column="3" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TCXMLSep"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" x:Name="FileEncoding"/>
+
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="3" Content="Proceed" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="SaveImportOptions"/>
+            <Button Content="Back" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" Click="GoBack"/>
+        </Grid>
+        
+    </Grid>
+</Page>
