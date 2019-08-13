@@ -167,5 +167,14 @@ namespace TCMigrator.Properties {
                 return ((string)(this["OraclePassword"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EUSA")]
+        public string TablePrefix {
+            get {
+                return ((string)(this["TablePrefix"]));
+            }
+        }
     }
 }

@@ -50,5 +50,8 @@
     <Setting Name="OraclePassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Hyla1234$%</Value>
     </Setting>
+    <Setting Name="TablePrefix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EUSA</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
