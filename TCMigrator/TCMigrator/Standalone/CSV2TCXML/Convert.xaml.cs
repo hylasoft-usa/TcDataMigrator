@@ -69,7 +69,7 @@ namespace TCMigrator.Standalone.CSV2TCXML
             Converter csv = new Converter();
             if (convert(ctd.importLocation, csv))
             {
-
+                csv.archive(ctd.outTCXML);
             }
         }
         private bool convert(String csvPath, Converter csv)

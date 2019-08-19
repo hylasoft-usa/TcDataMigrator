@@ -30,11 +30,14 @@ namespace TCMigrator.DBImpot
         private ConcurrentQueue<String> outputData = new ConcurrentQueue<string>();
         private ConcurrentQueue<String> errorData = new ConcurrentQueue<string>();
         private readonly AutoResetEvent _signal = new AutoResetEvent(false);
-        private readonly AutoResetEvent _errorSignal = new AutoResetEvent(false);
-        private bool readersShouldRun = false;
         private string user;
         private string password;
         private string group;
+        private bool shouldQuit = false;
+        private bool? operationSuccess;
+        private List<Run> outputRuns = new List<Run>();
+        private bool? csvCompleteSuccess;
+        private bool? importCompleteSuccess;
         public ConvertAndImport(IPageMediator main)
         {
             InitializeComponent();
@@ -68,55 +71,83 @@ namespace TCMigrator.DBImpot
         {
             ConvertThreadData ctd = (ConvertThreadData)data;
             Converter csv = new Converter();
-            if (convert(ctd.importLocation, csv))
+            csv.TCCommandPrompt.Prompt.OutputDataReceived += (s, e) => handleData(e.Data);
+            csv.TCCommandPrompt.Prompt.ErrorDataReceived += (s, e) => handleData(e.Data);
+            csv.TCCommandPrompt.Prompt.BeginOutputReadLine();
+            csv.TCCommandPrompt.Prompt.BeginErrorReadLine();
+            convert(ctd, csv);
+            
+                //await completion
+            while (!csvCompleteSuccess.HasValue)
             {
-                csv.Import(ctd.outTCXML,user,password,group);
-                bool? success = null;
-                List<String> output = new List<String>();
-                var iterations = 0;
-                while (!success.HasValue)
-                {
-                    var textualData = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                    if (textualData.Contains("The import operation has completed successfully"))
-                    {
-                        success = true;
-                        csv.TCCommandPrompt.Exit();
-                        if (!String.IsNullOrWhiteSpace(textualData))
-                        {
-                            _context.Post(AppendOutput, textualData.ToString());
-                        }
-                    }
-                    else if (textualData.Contains("Import Error"))
-                    {
-                        success = false;
-                        if (!String.IsNullOrWhiteSpace(textualData))
-                        {
-
-                            _context.Post(AppendError, textualData.ToString());
-                            
-                            var tdata = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                            while (!String.IsNullOrWhiteSpace(tdata))
-                            {
-                                _context.Post(AppendError, data.ToString());
-                                tdata = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                            }
-                            csv.TCCommandPrompt.Exit();
-                        }
-
-                    }
-                    else
-                    {
-                        if (!String.IsNullOrWhiteSpace(textualData))
-                        {
-                            _context.Post(AppendOutput, textualData.ToString());
-                        }
-                    }
-                    iterations++;
-                    if (iterations > 400) { success = false; }
-                }
+                Thread.Sleep(50);
+            }
+            if (csvCompleteSuccess.HasValue && csvCompleteSuccess.Value)
+            {
+                csv.Import(ctd.outTCXML, user, password, group);
+            }
+            else
+            {
+                csv.archive(ctd.outTCXML);
+            }
+            //await import complete
+            while (!importCompleteSuccess.HasValue)
+            {
+                Thread.Sleep(50);
+            }
+            if (importCompleteSuccess.Value)
+            {
+                csv.archive(ctd.outTCXML);
+               
+            }
+            else
+            {
+                csv.archive(ctd.outTCXML);
+            }
+            
+        }
+        private void handleData(object d)
+        {
+            checkCompletionStatus(d);
+            var data = d.ToString();
+            if(data.Contains(Properties.CommandLineText.CSV_SUCCESS) || data.Contains(Properties.CommandLineText.TCXML_IMPORT_SUCCESS))
+            {
+                _context.Post(AppendSuccess, d);
+            }
+            else if(data.Contains(Properties.CommandLineText.CSV_FAILURE) || data.Contains(Properties.CommandLineText.TCXML_IMPORT_FAILURE))
+            {
+                shouldQuit = true;
+                operationSuccess = false;
+                _context.Post(AppendError, d);
+                
+            }
+            else
+            {
+                _context.Post(AppendData, d);
+            }
+            checkDataStreams();
+        }
+        private void checkCompletionStatus(object d)
+        {
+            var data = (string)d;
+            if (data.Contains(Properties.CommandLineText.CSV_SUCCESS))
+            {
+                csvCompleteSuccess = true;
+            }
+            if (data.Contains(Properties.CommandLineText.CSV_FAILURE))
+            {
+                csvCompleteSuccess = false;
+            }
+            if (data.Contains(Properties.CommandLineText.TCXML_IMPORT_FAILURE))
+            {
+                importCompleteSuccess = false;
+            }
+            if (data.Contains(Properties.CommandLineText.TCXML_IMPORT_SUCCESS))
+            {
+                importCompleteSuccess = true;
             }
         }
-        private bool convert(String csvPath, Converter csv)
+        private void convert(ConvertThreadData ctd, Converter csv)
         {
             var convertOptions = main.getCurrentImportOptions();
             List<String> Params = new List<String>();
@@ -142,50 +173,40 @@ namespace TCMigrator.DBImpot
             {
                 Params.Add(String.Format(Properties.ConvertConfig.group_items, convertOptions.groupDataItemsType));
             }
-            csv.ConvertWithParameters(csvPath, Params);
-            bool? success = null;
-            List<String> output = new List<String>();
-            while (!success.HasValue)
-            {
-                var data = csv.TCCommandPrompt.Prompt.StandardError.ReadLine();
-                if (data.Contains("Converting took"))
-                {
-                    success = true;
-                    if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendOutput, data.ToString());
-                    }
-                }
-                else if (data.Contains("FATAL"))
-                {
-                    success = false;
-                    csv.TCCommandPrompt.Exit();
-                    if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendError, data.ToString());
-                    }
-                }
-                else
-                {
-                   if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendOutput, data.ToString());
-                    }
-                }
-            }
-            return success.Value;
+            csv.ConvertWithParameters(ctd.importLocation, Params);
         }
-
-        public void AppendOutput(object o)
-        {
-            Output.Inlines.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " +o + System.Environment.NewLine);
-            Viewer.ScrollToBottom();
-
-        }
-        public void AppendError(object o)
+        private void AppendError(object o)
         {
             Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkRed, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
             Viewer.ScrollToBottom();
+        }
+        private void AppendSuccess(object o)
+        {
+            Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkGreen, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
+            Viewer.ScrollToBottom();
+        }
+        private void AppendData(object o)
+        {
+            if (!String.IsNullOrWhiteSpace(o.ToString())){
+                Output.Inlines.Add(o.ToString());
+                Output.Inlines.Add(Environment.NewLine);
+                Viewer.ScrollToBottom();
+            }
+        }
+
+        private void checkDataStreams()
+        {
+            if (outputRuns.Count > 0)
+            {
+                foreach(Run r in outputRuns)
+                {
+                    Output.Inlines.Add(r);
+                    Viewer.ScrollToBottom();
+                    outputRuns.Remove(r);
+                }
+            }
         }
         public class ConvertThreadData
         {

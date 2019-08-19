@@ -1,0 +1,32 @@
+﻿<Page x:Class="TCMigrator.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Home">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Teamcenter Data Migrator" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Top" FontSize="35" FontFamily="Segoe UI Semibold"/>
+        <Button Content="Start a New Migration" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}" Click="StartMigrator"/>
+        <Button Content="Create CSV From DB" Grid.Column="1" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}" Click="DownloadCSV"/>
+        <Button Content="Convert CSV to TCXML" Grid.Column="2" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}" Click="ToTCXML"/>
+        <Button Content="Import TCXML" Grid.Row="2" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}" Click="ImportTcxml"/>
+        <Button Content="Configure Settings" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}" Click="ConfigSettings"/>
+        <Button Content="View Help" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        
+    </Grid>
+</Page>

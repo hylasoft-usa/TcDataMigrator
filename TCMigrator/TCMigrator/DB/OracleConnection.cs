@@ -134,7 +134,14 @@ namespace TCMigrator.DB
             List<String> tables = new List<String>();
             var con = getConnection();
             var command = con.CreateCommand();
-            command.CommandText = "SELECT table_name FROM all_tables";
+            if (!String.IsNullOrWhiteSpace(Properties.Database.Default.TablePrefix))
+            {
+                command.CommandText = "SELECT table_name FROM all_tables where table_name like '%" + Properties.Database.Default.TablePrefix + "%'";
+            }
+            else
+            {
+                command.CommandText = "SELECT table_name FROM all_tables";
+            }
             con.Open();
             using(var reader = command.ExecuteReader())
             {

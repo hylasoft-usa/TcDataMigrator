@@ -28,13 +28,15 @@ namespace TCMigrator.Mediators
         private ImportData data;
         private CSVConverterOptions options;
         private int step;
-        public DBMediator()
+        MainWindow mw;
+        public DBMediator(MainWindow mw)
         {
             InitializeComponent();
             pages = new List<Page>();
             pages.Add(new DataSelect(this));
             step = 0;
             ContentWindow.Content = new DataSelect(this);
+            this.mw = mw;
         }
 
         public void advance()

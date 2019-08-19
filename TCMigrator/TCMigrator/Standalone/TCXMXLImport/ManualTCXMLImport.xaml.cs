@@ -29,8 +29,10 @@ namespace TCMigrator.Standalone.TCXMXLImport
         Thread t1;
         string xmlLocation;
         private SynchronizationContext _context = SynchronizationContext.Current;
-        public ManualTCXMLImport()
+        MainWindow mw;
+        public ManualTCXMLImport(MainWindow mw)
         {
+            this.mw = mw;
             InitializeComponent();
         }
 
@@ -77,6 +79,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
                     {
                         _context.Post(AppendOutput, textualData.ToString());
                         _context.Post(setComplete, null);
+                        csv.archive(dir.ToString());
                     }
                 }
                 else if (textualData.Contains("Import Error"))
@@ -93,6 +96,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
                             data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
                         }
                         csv.TCCommandPrompt.Exit();
+                        csv.archive(dir);
                     }
 
                 }
@@ -121,7 +125,9 @@ namespace TCMigrator.Standalone.TCXMXLImport
             btn.Content = "Retry";
             btn.Style = FindResource("EngRedBtn") as Style;
         }
-        public void GoHome(object sender, RoutedEventArgs e) { }
+        public void GoHome(object sender, RoutedEventArgs e) {
+            mw.NavigateHome();
+        }
         public void AppendOutput(object o)
         {
             Output.Inlines.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine);

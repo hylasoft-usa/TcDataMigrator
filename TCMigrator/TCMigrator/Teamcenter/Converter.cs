@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TC = TCMigrator.Properties.TeamcenterSettings;
 using CMD = TCMigrator.Properties.CommandLineText;
+using System.IO;
 
 namespace TCMigrator.Teamcenter
 {
@@ -73,6 +74,32 @@ namespace TCMigrator.Teamcenter
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
             var command = String.Format(@"tcxml_import -file={0} -u={1} -p={2} -g={3} -bulk_load -bypass_inferdelete", path,user, password, group);
             cmd.SendCommand(command);
+
+        }
+        public void archive(string path)
+        {
+            var achriveExtensions = new string[] { ".txt", ".csv", ".xml", ".log" };
+            var now = DateTime.Now;
+            var filename = String.Format("Import_{0}_{1}_{2} {3}-{4}-{5}\\", now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+            string dirname = "";
+            if (path.EndsWith(@"\"))
+            {
+                dirname = path + filename;
+            }
+            else
+            {
+                dirname = path + @"\" + filename;
+            }
+            if (!Directory.Exists(dirname))
+            {
+                Directory.CreateDirectory(dirname);
+            }
+            DirectoryInfo d = new DirectoryInfo(path);
+            FileInfo[] f = d.GetFiles();
+            foreach(FileInfo fi in f)
+            {
+                File.Move(fi.FullName, dirname + fi.Name);
+            }
 
         }
         private string getDriveLetter(string path)

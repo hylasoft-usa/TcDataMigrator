@@ -16,34 +16,35 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Menu HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top" Height="20" Background="White">
+            <Menu HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top" Height="20" Background="#022f4d" Foreground="White">
                 <MenuItem Header="File">
-                    <MenuItem Header="Setup" Click="NavigateSetup"></MenuItem>
-                    <MenuItem Header="CSV2TCXML"></MenuItem>
+                    <MenuItem Header="Home" Click="GoHome" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Setup" Click="NavigateSetup" Foreground="Black"></MenuItem>
+                    <MenuItem Header="New DB Import" Click="DBImport" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Tools">
-                    <MenuItem Header="_DB2CSV" Click="Db2Csv"></MenuItem>
-                    <MenuItem Header="_CSV2TCXML" Click="TCXML"></MenuItem>
-                    <MenuItem Header="_TCXML Import" Click="Import"></MenuItem>
+                    <MenuItem Header="_DB2CSV" Click="Db2Csv" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_CSV2TCXML" Click="TCXML" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TCXML Import" Click="Import" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Settings">
-                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings"></MenuItem>
-                    <MenuItem Header="_Database Settings" Click="ShowDBSettings"></MenuItem>
-                    <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings"></MenuItem>
-                    <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings"></MenuItem>
-                    <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings"></MenuItem>
+                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_Database Settings" Click="ShowDBSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Logs">
-                    <MenuItem Header="Execution Log"></MenuItem>
-                    <MenuItem Header="Logging Log"></MenuItem>
-                    <MenuItem Header="Error Log"></MenuItem>
-                    <MenuItem Header="Data Log"></MenuItem>
+                    <MenuItem Header="Execution Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Logging Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Error Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Data Log" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help">
 
                 </MenuItem>
             </Menu>
-            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden" Background="White"/>
         </Grid>
 
     </Grid>
