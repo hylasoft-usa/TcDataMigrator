@@ -97,6 +97,24 @@ namespace TCMigrator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FATAL.
+        /// </summary>
+        public static string CSV_FAILURE {
+            get {
+                return ResourceManager.GetString("CSV_FAILURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converting took.
+        /// </summary>
+        public static string CSV_SUCCESS {
+            get {
+                return ResourceManager.GetString("CSV_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EXIT.
         /// </summary>
         public static string EXIT {
@@ -147,6 +165,24 @@ namespace TCMigrator.Properties {
         public static string TC_XML_IMPORT {
             get {
                 return ResourceManager.GetString("TC_XML_IMPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Error.
+        /// </summary>
+        public static string TCXML_IMPORT_FAILURE {
+            get {
+                return ResourceManager.GetString("TCXML_IMPORT_FAILURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The import operation has completed successfully.
+        /// </summary>
+        public static string TCXML_IMPORT_SUCCESS {
+            get {
+                return ResourceManager.GetString("TCXML_IMPORT_SUCCESS", resourceCulture);
             }
         }
     }

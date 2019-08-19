@@ -26,7 +26,7 @@ namespace TCMigrator
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new DBMediator();
+            Main.Content = new Home(this);
         }
         private void ShowLoggingSettings(object sender, RoutedEventArgs e)
         {
@@ -56,19 +56,32 @@ namespace TCMigrator
         }
         public void NavigateHome()
         {
-            Main.Content = new DBMediator();
+            Main.Content = new DBMediator(this);
         }
         public void Db2Csv(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Db2CsvMediator();
+            Main.Content = new Db2CsvMediator(this);
         }
         public void TCXML(object sender, RoutedEventArgs e)
         {
-            Main.Content = new CSV2TCXMLMediator();
+            Main.Content = new CSV2TCXMLMediator(this);
         }
         public void Import(object sender, RoutedEventArgs e)
         {
-            Main.Content = new ManualTCXMLImport();
+            Main.Content = new ManualTCXMLImport(this);
+        }
+
+        private void DBImport(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new DBMediator(this);
+        }
+        public void Navigate(Page p)
+        {
+            Main.Content = p;
+        }
+        public void GoHome(object sender, RoutedEventArgs e)
+        {
+            NavigateHome();
         }
     }
 }

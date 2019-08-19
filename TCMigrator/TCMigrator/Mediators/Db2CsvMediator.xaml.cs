@@ -28,8 +28,10 @@ namespace TCMigrator.Mediators
         private List<Page> pages;
         private ImportData data;
         private int step;
-        public Db2CsvMediator()
+        private MainWindow mw;
+        public Db2CsvMediator(MainWindow mw)
         {
+            this.mw = mw;
             InitializeComponent();
             pages = new List<Page>();
             pages.Add(new DataSelect(this));

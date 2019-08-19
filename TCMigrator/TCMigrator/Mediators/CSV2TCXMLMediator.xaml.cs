@@ -28,8 +28,10 @@ namespace TCMigrator.Mediators
         private ImportData data;
         private int step;
         private CSVConverterOptions o;
-        public CSV2TCXMLMediator()
+        private MainWindow mw;
+        public CSV2TCXMLMediator(MainWindow mw)
         {
+            this.mw = mw;
             InitializeComponent();
             data = new ImportData(String.Format("ManualImport_{0}", DateTime.Now));
             step = 1;

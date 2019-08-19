@@ -129,6 +129,12 @@
   <data name="CONVERT_CSV2TCXML_PARAM_SPECIFICATION" xml:space="preserve">
     <value>-p {0}={1}</value>
   </data>
+  <data name="CSV_FAILURE" xml:space="preserve">
+    <value>FATAL</value>
+  </data>
+  <data name="CSV_SUCCESS" xml:space="preserve">
+    <value>Converting took</value>
+  </data>
   <data name="EXIT" xml:space="preserve">
     <value>EXIT</value>
   </data>
@@ -143,6 +149,12 @@
   </data>
   <data name="SET_TC_ROOT" xml:space="preserve">
     <value>SET TC_ROOT={0}</value>
+  </data>
+  <data name="TCXML_IMPORT_FAILURE" xml:space="preserve">
+    <value>Import Error</value>
+  </data>
+  <data name="TCXML_IMPORT_SUCCESS" xml:space="preserve">
+    <value>The import operation has completed successfully</value>
   </data>
   <data name="TC_XML_IMPORT" xml:space="preserve">
     <value>tcxml_import –file={0} –bulk_load –bypass_inferdelete</value>
