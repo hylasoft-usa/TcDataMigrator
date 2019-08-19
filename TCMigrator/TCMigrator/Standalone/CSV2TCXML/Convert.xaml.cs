@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Interfaces;
 using TCMigrator.Teamcenter;
+using TCMigrator.VisualUtilities;
 using static TCMigrator.DBImpot.ConvertAndImport;
 
 namespace TCMigrator.Standalone.CSV2TCXML
@@ -66,7 +67,7 @@ namespace TCMigrator.Standalone.CSV2TCXML
         public void performCmdCalls(object data)
         {
             ConvertThreadData ctd = (ConvertThreadData)data;
-            Converter csv = new Converter();
+            Converter csv = new Converter(callback);
             if (convert(ctd.importLocation, csv))
             {
                 csv.archive(ctd.outTCXML);
@@ -98,38 +99,8 @@ namespace TCMigrator.Standalone.CSV2TCXML
             {
                 Params.Add(String.Format(Properties.ConvertConfig.group_items, convertOptions.groupDataItemsType));
             }
-            csv.ConvertWithParameters(csvPath, Params);
-            bool? success = null;
-            List<String> output = new List<String>();
-            while (!success.HasValue)
-            {
-                var data = csv.TCCommandPrompt.Prompt.StandardError.ReadLine();
-                if (data.Contains("Converting took"))
-                {
-                    success = true;
-                    if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendOutput, data.ToString());
-                    }
-                }
-                else if (data.Contains("FATAL"))
-                {
-                    success = false;
-                    csv.TCCommandPrompt.Exit();
-                    if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendError, data.ToString());
-                    }
-                }
-                else
-                {
-                    if (!String.IsNullOrWhiteSpace(data))
-                    {
-                        _context.Post(AppendOutput, data.ToString());
-                    }
-                }
-            }
-            return success.Value;
+            var xmlPath = "";
+            return csv.ConvertWithParameters(csvPath, Params,out xmlPath,true);
         }
 
         private void GoHome(Object sender, RoutedEventArgs e)
@@ -146,17 +117,41 @@ namespace TCMigrator.Standalone.CSV2TCXML
             }
             return output;
         }
-
-        public void AppendOutput(object o)
+        private void callback(UIMessage m)
         {
-            Output.Inlines.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine);
-            Viewer.ScrollToBottom();
-
+            switch (m.MessageType)
+            {
+                case UIMessageType.SUCCESS:
+                    _context.Post(AppendSuccess, m);
+                    break;
+                case UIMessageType.ERROR:
+                    _context.Post(AppendError, m);
+                    break;
+                case UIMessageType.DATA:
+                    _context.Post(AppendData, m);
+                    break;
+            }
         }
-        public void AppendError(object o)
+        private void AppendError(object o)
         {
             Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkRed, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
             Viewer.ScrollToBottom();
+        }
+        private void AppendSuccess(object o)
+        {
+            Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkGreen, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
+            Viewer.ScrollToBottom();
+        }
+        private void AppendData(object o)
+        {
+            if (!String.IsNullOrWhiteSpace(o.ToString()))
+            {
+                Output.Inlines.Add(o.ToString());
+                Output.Inlines.Add(Environment.NewLine);
+                Viewer.ScrollToBottom();
+            }
         }
     }
 }

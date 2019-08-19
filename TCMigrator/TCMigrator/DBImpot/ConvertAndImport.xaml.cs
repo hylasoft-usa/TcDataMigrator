@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Interfaces;
 using TCMigrator.Teamcenter;
+using TCMigrator.VisualUtilities;
 
 namespace TCMigrator.DBImpot
 {
@@ -70,81 +71,23 @@ namespace TCMigrator.DBImpot
         public void performCmdCalls(object data)
         {
             ConvertThreadData ctd = (ConvertThreadData)data;
-            Converter csv = new Converter();
-            csv.TCCommandPrompt.Prompt.OutputDataReceived += (s, e) => handleData(e.Data);
-            csv.TCCommandPrompt.Prompt.ErrorDataReceived += (s, e) => handleData(e.Data);
-            csv.TCCommandPrompt.Prompt.BeginOutputReadLine();
-            csv.TCCommandPrompt.Prompt.BeginErrorReadLine();
+            Converter csv = new Converter(callback);
             convert(ctd, csv);
-            
-                //await completion
-            while (!csvCompleteSuccess.HasValue)
-            {
-                Thread.Sleep(50);
-            }
-            if (csvCompleteSuccess.HasValue && csvCompleteSuccess.Value)
-            {
-                csv.Import(ctd.outTCXML, user, password, group);
-            }
-            else
-            {
-                csv.archive(ctd.outTCXML);
-            }
-            //await import complete
-            while (!importCompleteSuccess.HasValue)
-            {
-                Thread.Sleep(50);
-            }
-            if (importCompleteSuccess.Value)
-            {
-                csv.archive(ctd.outTCXML);
-               
-            }
-            else
-            {
-                csv.archive(ctd.outTCXML);
-            }
-            
+            csv.Import(ctd.outTCXML, user, password, group);     
         }
-        private void handleData(object d)
+        private void callback(UIMessage m)
         {
-            checkCompletionStatus(d);
-            var data = d.ToString();
-            if(data.Contains(Properties.CommandLineText.CSV_SUCCESS) || data.Contains(Properties.CommandLineText.TCXML_IMPORT_SUCCESS))
+            switch (m.MessageType)
             {
-                _context.Post(AppendSuccess, d);
-            }
-            else if(data.Contains(Properties.CommandLineText.CSV_FAILURE) || data.Contains(Properties.CommandLineText.TCXML_IMPORT_FAILURE))
-            {
-                shouldQuit = true;
-                operationSuccess = false;
-                _context.Post(AppendError, d);
-                
-            }
-            else
-            {
-                _context.Post(AppendData, d);
-            }
-            checkDataStreams();
-        }
-        private void checkCompletionStatus(object d)
-        {
-            var data = (string)d;
-            if (data.Contains(Properties.CommandLineText.CSV_SUCCESS))
-            {
-                csvCompleteSuccess = true;
-            }
-            if (data.Contains(Properties.CommandLineText.CSV_FAILURE))
-            {
-                csvCompleteSuccess = false;
-            }
-            if (data.Contains(Properties.CommandLineText.TCXML_IMPORT_FAILURE))
-            {
-                importCompleteSuccess = false;
-            }
-            if (data.Contains(Properties.CommandLineText.TCXML_IMPORT_SUCCESS))
-            {
-                importCompleteSuccess = true;
+                case UIMessageType.SUCCESS:
+                    _context.Post(AppendSuccess, m);
+                    break;
+                case UIMessageType.ERROR:
+                    _context.Post(AppendError, m);
+                    break;
+                case UIMessageType.DATA:
+                    _context.Post(AppendData, m);
+                    break;
             }
         }
         private void convert(ConvertThreadData ctd, Converter csv)
@@ -173,7 +116,8 @@ namespace TCMigrator.DBImpot
             {
                 Params.Add(String.Format(Properties.ConvertConfig.group_items, convertOptions.groupDataItemsType));
             }
-            csv.ConvertWithParameters(ctd.importLocation, Params);
+            var xmlPath = "";
+            csv.ConvertWithParameters(ctd.importLocation, Params,out xmlPath);
         }
         private void AppendError(object o)
         {
@@ -193,19 +137,6 @@ namespace TCMigrator.DBImpot
                 Output.Inlines.Add(o.ToString());
                 Output.Inlines.Add(Environment.NewLine);
                 Viewer.ScrollToBottom();
-            }
-        }
-
-        private void checkDataStreams()
-        {
-            if (outputRuns.Count > 0)
-            {
-                foreach(Run r in outputRuns)
-                {
-                    Output.Inlines.Add(r);
-                    Viewer.ScrollToBottom();
-                    outputRuns.Remove(r);
-                }
             }
         }
         public class ConvertThreadData

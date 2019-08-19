@@ -96,7 +96,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
                             data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
                         }
                         csv.TCCommandPrompt.Exit();
-                        csv.archive(dir);
+                        csv.archive(dir.ToString());
                     }
 
                 }
