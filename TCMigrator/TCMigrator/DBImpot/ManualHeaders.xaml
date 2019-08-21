@@ -14,15 +14,15 @@
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Stretch" x:Name="ColumnList">
+        <ListView HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Stretch" x:Name="ColumnList" KeyboardNavigation.TabNavigation="Continue" IsTabStop="False">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Column Name" DisplayMemberBinding="{Binding ColumnName}" Width="150"></GridViewColumn>
                     <GridViewColumn Header="Example Data" DisplayMemberBinding="{Binding ExampleData}" Width="150"></GridViewColumn>
-                    <GridViewColumn Header="CSV Header" Width="150">
+                    <GridViewColumn Header="CSV Header" Width="400">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding Header}" TextWrapping="Wrap" Width="150" Margin="0"></TextBox>
+                                <TextBox Text="{Binding Header}" TextWrapping="Wrap" Width="350" Margin="0" TabIndex="{Binding Index}"></TextBox>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

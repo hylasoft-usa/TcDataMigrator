@@ -39,7 +39,7 @@ namespace TCMigrator.DBImpot
             
             for(var x= 0; x < cols.Count; x++)
             {
-                columns.Add(new DisplayObject(cols[x], entries[x]));
+                columns.Add(new DisplayObject(cols[x], entries[x],x));
             }
         }
         private void addDisplayObjects()
@@ -74,11 +74,13 @@ namespace TCMigrator.DBImpot
         public string ColumnName { get; set; }
         public string ExampleData { get; set; }
         public string Header{ get; set; }
-        public DisplayObject(string ColName, String exampleData)
+        public int Index { get; set; }
+        public DisplayObject(string ColName, String exampleData,int id)
         {
             ColumnName = ColName;
             ExampleData = exampleData;
             Header = "";
+            Index = id;
         }
     }
 }

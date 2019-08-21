@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Teamcenter;
+using TCMigrator.VisualUtilities;
 
 namespace TCMigrator.Standalone.TCXMXLImport
 {
@@ -61,6 +62,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
         }
         private void import(object dir)
         {
+<<<<<<< Updated upstream
             var csv = new Converter();
             csv.Import(xmlLocation,dir.ToString(),user,password,group);
             bool? success = null;
@@ -108,6 +110,11 @@ namespace TCMigrator.Standalone.TCXMXLImport
 
             }
 
+=======
+            var csv = new Converter(callback);
+            if (csv.Import(xmlLocation, dir.ToString(), user, password, group)) { _context.Post(setComplete,new object()); }
+            else { _context.Post(setError, new object()); }
+>>>>>>> Stashed changes
         }
         public void setComplete(object o)
         {
@@ -121,17 +128,49 @@ namespace TCMigrator.Standalone.TCXMXLImport
             btn.Content = "Retry";
             btn.Style = FindResource("EngRedBtn") as Style;
         }
+<<<<<<< Updated upstream
         public void GoHome(object sender, RoutedEventArgs e) { }
         public void AppendOutput(object o)
-        {
-            Output.Inlines.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine);
-            Viewer.ScrollToBottom();
-
+=======
+        public void GoHome(object sender, RoutedEventArgs e) {
+            mw.NavigateHome();
         }
-        public void AppendError(object o)
+        private void callback(UIMessage m)
+>>>>>>> Stashed changes
+        {
+            switch (m.MessageType)
+            {
+                case UIMessageType.SUCCESS:
+                    _context.Post(AppendSuccess, m);
+                    break;
+                case UIMessageType.ERROR:
+                    _context.Post(AppendError, m);
+                    break;
+                case UIMessageType.DATA:
+                    _context.Post(AppendData, m);
+                    break;
+            }
+        }
+        private void AppendError(object o)
         {
             Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkRed, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
             Viewer.ScrollToBottom();
+        }
+        private void AppendSuccess(object o)
+        {
+            Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkGreen, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
+            Viewer.ScrollToBottom();
+        }
+        private void AppendData(object o)
+        {
+            if (!String.IsNullOrWhiteSpace(o.ToString()))
+            {
+                Output.Inlines.Add(o.ToString());
+                Output.Inlines.Add(Environment.NewLine);
+                Viewer.ScrollToBottom();
+            }
         }
     }
 }

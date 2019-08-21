@@ -68,16 +68,16 @@
                 <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="GroupByType"/>
                 <TextBox Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="LocalTimeOffset"/>
             </Grid>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" IsEnabled="False"/>
-            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvSep"/>
-            <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvQuote"/>
-            <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvEscape"/>
-            <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SourceSite"/>
-            <TextBox  Grid.Column="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="IslandSize"/>
-            <TextBox  Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewType"/>
-            <TextBox  Grid.Column="3" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewRevisionType"/>
-            <TextBox  Grid.Column="3" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TCXMLSep"/>
-            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" x:Name="FileEncoding"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" IsEnabled="False" TabIndex="1"/>
+            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvSep" TabIndex="3"/>
+            <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvQuote" TabIndex="4"/>
+            <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvEscape" TabIndex="5"/>
+            <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SourceSite" TabIndex="6"/>
+            <TextBox  Grid.Column="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="IslandSize" TabIndex="7"/>
+            <TextBox  Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewType" TabIndex="8"/>
+            <TextBox  Grid.Column="3" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="BomViewRevisionType" TabIndex="9"/>
+            <TextBox  Grid.Column="3" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TCXMLSep" TabIndex="10"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" x:Name="FileEncoding" TabIndex="2"/>
 
 
         </Grid>
@@ -88,7 +88,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Content="Proceed" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="SaveImportOptions"/>
+            <Button Grid.Column="3" Content="Proceed" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="SaveImportOptions" TabIndex="11"/>
             <Button Content="Back" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" Click="GoBack"/>
         </Grid>
         
