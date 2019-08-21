@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TCMigrator.Data;
 using TCMigrator.Interfaces;
 using ODC=Oracle.ManagedDataAccess.Client;
 
@@ -10,6 +11,13 @@ namespace TCMigrator.DB
 {
     class OracleConnection : IDbConnection
     {
+        private Dictionary<String, String> mapping;
+        private List<OracleColumnMap> columnMap;
+        public OracleConnection()
+        {
+            this.mapping = getMappings();
+            this.columnMap = getOracleColumnMap();
+        }
         public Dictionary<String,String> getMappings()
         {
             Dictionary<String, String> mappings = new Dictionary<string, string>();
@@ -30,35 +38,67 @@ namespace TCMigrator.DB
             }
             return mappings;
         }
-        public List<string> AutogenerateHeaderRow(string tableName)
+        public List<OracleColumnMap> getOracleColumnMap()
         {
-            var mappings = getMappings();
-            var columns = getTableColumns(tableName);
-            var headers = new List<String>();
-            foreach(String s in columns)
+            List<OracleColumnMap> map = new List<OracleColumnMap>();
+            using(var con = getConnection())
             {
-                var parts = s.Split(new[] { "__" }, StringSplitOptions.RemoveEmptyEntries);
-                if (mappings.ContainsKey(parts[0]))
+                var com = con.CreateCommand();
+                com.CommandText = "SELECT * from EUSA_COLUMNTOHEADER";
+                con.Open();
+                using(var reader = com.ExecuteReader())
                 {
-                    headers.Add(mappings[parts[0]] + ":" + parts[1]);
+                    while (reader.Read())
+                    {
+                        var objectType = reader.GetString(0);
+                        var columnName = reader.GetString(1);
+                        var header = reader.GetString(2);
+                        map.Add(new OracleColumnMap(objectType, header, columnName)); ;
+                    }
                 }
             }
-            return headers;
+            return map;
+        }
+        public List<string> AutogenerateHeaderRow(string tableName)
+        {
+            var columns = getTableColumns(tableName);
+            return AutogenerateHeaderRow(columns);
         }
 
         public List<string> AutogenerateHeaderRow(List<string> columnNames)
         {
-            var mappings = getMappings();
             var headers = new List<String>();
             foreach (String s in columnNames)
             {
-                var parts = s.Split(new[] { "__" }, StringSplitOptions.RemoveEmptyEntries);
-                if (mappings.ContainsKey(parts[0].ToLower()))
+                if (s.Contains("__"))
                 {
-                    headers.Add(mappings[parts[0].ToLower()] + ":" + parts[1]);
+                    var parts = s.Split(new[] { "__" }, StringSplitOptions.RemoveEmptyEntries);
+                    var itemType = getItemType(parts[0]);
+                    if (!String.IsNullOrWhiteSpace(itemType))
+                    {
+                        headers.Add(String.Format("{0}:{1}", itemType, getHeaderValue(itemType, parts[1])));
+                    }
+                    else { headers.Add(s); }
                 }
+                else { headers.Add(s); }
             }
             return headers;
+        }
+        public string getItemType(string typeCode)
+        {
+            var tc = typeCode.ToLower();
+            if (mapping.ContainsKey(tc))
+            {
+                return mapping[tc];
+            }
+            return "";
+        }
+        public string getHeaderValue(string itemType, string headerValue)
+        {
+            var filter = columnMap.Where(x => x.ObjectType.ToLower() == itemType.ToLower());
+            var f2 = filter.Where(x => x.ColumnName.ToLower() == headerValue.ToLower()).FirstOrDefault();
+            if (f2 != null) { return f2.HeaderText; }
+            else { return ""; }
         }
 
         public List<string[]> getEntries(string tableName)
@@ -70,13 +110,16 @@ namespace TCMigrator.DB
             con.Open();
             using(var reader = command.ExecuteReader())
             {
-                var ColCount = reader.FieldCount;
-                var arr = new List<String>();
-                for (var x = 0; x < ColCount; x++)
+                while (reader.Read())
                 {
-                    arr.Add(reader.GetString(x));
+                    var ColCount = reader.FieldCount;
+                    var arr = new List<String>();
+                    for (var x = 0; x < ColCount; x++)
+                    {
+                        arr.Add(reader.GetString(x));
+                    }
+                    entries.Add(arr.ToArray());
                 }
-                entries.Add(arr.ToArray());
             }
             con.Close();
             return entries;
@@ -97,14 +140,16 @@ namespace TCMigrator.DB
             con.Open();
             using (var reader = command.ExecuteReader())
             {
-                reader.Read();
-                var ColCount = reader.FieldCount;
-                var arr = new List<String>();
-                for (var x = 0; x < ColCount; x++)
+                while (reader.Read())
                 {
-                    arr.Add(reader.GetValue(x).ToString());
+                    var ColCount = reader.FieldCount;
+                    var arr = new List<String>();
+                    for (var x = 0; x < ColCount; x++)
+                    {
+                        arr.Add(reader.GetValue(x).ToString());
+                    }
+                    entries.Add(arr.ToArray());
                 }
-                entries.Add(arr.ToArray());
             }
             con.Close();
             return entries;
