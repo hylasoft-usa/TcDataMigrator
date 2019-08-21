@@ -41,24 +41,6 @@
                     <MenuItem Header="Error Log" Foreground="Black"></MenuItem>
                     <MenuItem Header="Data Log" Foreground="Black"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Tools" IsTabStop="False">
-                    <MenuItem Header="_DB2CSV" Click="Db2Csv" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_CSV2TCXML" Click="TCXML" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_TCXML Import" Click="Import" Foreground="Black"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Settings" IsTabStop="False">
-                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_Database Settings" Click="ShowDBSettings" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings" Foreground="Black"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Logs" IsTabStop="False">
-                    <MenuItem Header="Execution Log" Foreground="Black"></MenuItem>
-                    <MenuItem Header="Logging Log" Foreground="Black"></MenuItem>
-                    <MenuItem Header="Error Log" Foreground="Black"></MenuItem>
-                    <MenuItem Header="Data Log" Foreground="Black"></MenuItem>
-                </MenuItem>
                 <MenuItem Header="Help" IsTabStop="False">
 
                 </MenuItem>
