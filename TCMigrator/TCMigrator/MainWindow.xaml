@@ -1,4 +1,4 @@
-﻿<Window x:Class="TCMigrator.MainWindow"
+<Window x:Class="TCMigrator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,35 +16,30 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
             </Grid.RowDefinitions>
-<<<<<<< Updated upstream
-            <Menu HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top" Height="20" Background="White">
-                <MenuItem Header="File">
-                    <MenuItem Header="Setup" Click="NavigateSetup"></MenuItem>
-                    <MenuItem Header="CSV2TCXML"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Tools">
-                    <MenuItem Header="_DB2CSV" Click="Db2Csv"></MenuItem>
-                    <MenuItem Header="_CSV2TCXML" Click="TCXML"></MenuItem>
-                    <MenuItem Header="_TCXML Import" Click="Import"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Settings">
-                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings"></MenuItem>
-                    <MenuItem Header="_Database Settings" Click="ShowDBSettings"></MenuItem>
-                    <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings"></MenuItem>
-                    <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings"></MenuItem>
-                    <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Logs">
-                    <MenuItem Header="Execution Log"></MenuItem>
-                    <MenuItem Header="Logging Log"></MenuItem>
-                    <MenuItem Header="Error Log"></MenuItem>
-                    <MenuItem Header="Data Log"></MenuItem>
-=======
+
             <Menu HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top" Height="20" Background="#022f4d" Foreground="White">
                 <MenuItem Header="File" IsTabStop="False">
                     <MenuItem Header="Home" Click="GoHome" Foreground="Black"></MenuItem>
                     <MenuItem Header="Setup" Click="NavigateSetup" Foreground="Black"></MenuItem>
                     <MenuItem Header="New DB Import" Click="DBImport" Foreground="Black"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Tools">
+                    <MenuItem Header="_DB2CSV" Click="Db2Csv" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_CSV2TCXML" Click="TCXML" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TCXML Import" Click="Import" Foreground="Black"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Settings">
+                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_Database Settings" Click="ShowDBSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings" Foreground="Black"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Logs">
+                    <MenuItem Header="Execution Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Logging Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Error Log" Foreground="Black"></MenuItem>
+                    <MenuItem Header="Data Log" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Tools" IsTabStop="False">
                     <MenuItem Header="_DB2CSV" Click="Db2Csv" Foreground="Black"></MenuItem>
@@ -63,17 +58,12 @@
                     <MenuItem Header="Logging Log" Foreground="Black"></MenuItem>
                     <MenuItem Header="Error Log" Foreground="Black"></MenuItem>
                     <MenuItem Header="Data Log" Foreground="Black"></MenuItem>
->>>>>>> Stashed changes
                 </MenuItem>
                 <MenuItem Header="Help" IsTabStop="False">
 
                 </MenuItem>
             </Menu>
-<<<<<<< Updated upstream
-            <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden"/>
-=======
             <Frame x:Name="Main" Grid.Row="1" NavigationUIVisibility="Hidden" Background="White" IsTabStop="False"/>
->>>>>>> Stashed changes
         </Grid>
 
     </Grid>

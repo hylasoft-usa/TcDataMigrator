@@ -30,8 +30,10 @@ namespace TCMigrator.Standalone.TCXMXLImport
         Thread t1;
         string xmlLocation;
         private SynchronizationContext _context = SynchronizationContext.Current;
-        public ManualTCXMLImport()
+        MainWindow mw;
+        public ManualTCXMLImport(MainWindow mw)
         {
+            this.mw = mw;
             InitializeComponent();
         }
 
@@ -62,59 +64,9 @@ namespace TCMigrator.Standalone.TCXMXLImport
         }
         private void import(object dir)
         {
-<<<<<<< Updated upstream
-            var csv = new Converter();
-            csv.Import(xmlLocation,dir.ToString(),user,password,group);
-            bool? success = null;
-            List<String> output = new List<String>();
-            var iterations = 0;
-            while (!success.HasValue)
-            {
-                var textualData = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                if (textualData.Contains("The import operation has completed successfully"))
-                {
-                    success = true;
-                    csv.TCCommandPrompt.Exit();
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        _context.Post(AppendOutput, textualData.ToString());
-                        _context.Post(setComplete, null);
-                    }
-                }
-                else if (textualData.Contains("Import Error"))
-                {
-                    success = false;
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        
-                        _context.Post(AppendError, textualData.ToString());
-                        _context.Post(setError, null);
-                        var data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                        while (!String.IsNullOrWhiteSpace(data)){
-                            _context.Post(AppendError, data.ToString());
-                            data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                        }
-                        csv.TCCommandPrompt.Exit();
-                    }
-
-                }
-                else
-                {
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        _context.Post(AppendOutput, textualData.ToString());
-                    }
-                }
-                iterations++;
-                if (iterations > 400) { success = false; }
-
-            }
-
-=======
             var csv = new Converter(callback);
             if (csv.Import(xmlLocation, dir.ToString(), user, password, group)) { _context.Post(setComplete,new object()); }
             else { _context.Post(setError, new object()); }
->>>>>>> Stashed changes
         }
         public void setComplete(object o)
         {
@@ -128,15 +80,13 @@ namespace TCMigrator.Standalone.TCXMXLImport
             btn.Content = "Retry";
             btn.Style = FindResource("EngRedBtn") as Style;
         }
-<<<<<<< Updated upstream
-        public void GoHome(object sender, RoutedEventArgs e) { }
-        public void AppendOutput(object o)
-=======
+        public void GoHome(object sender, RoutedEventArgs e) {
+            mw.NavigateHome();
+        }
         public void GoHome(object sender, RoutedEventArgs e) {
             mw.NavigateHome();
         }
         private void callback(UIMessage m)
->>>>>>> Stashed changes
         {
             switch (m.MessageType)
             {

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\App.xaml
-19810782404
+21-1391266832
 
-58-150032471
+62-1108002393
 15-897550790
-DBImpot\ConvertAndImport.xaml;DBImpot\DataSelect.xaml;DBImpot\ImportOptions.xaml;DBImpot\ManualHeaders.xaml;DBImpot\Transform.xaml;MainWindow.xaml;Mediators\CSV2TCXMLMediator.xaml;Mediators\Db2CsvMediator.xaml;Mediators\DBMediator.xaml;Settings\CSVSettings.xaml;Settings\DBSettings.xaml;Settings\ImportSettings.xaml;Settings\LoggerSettings.xaml;Settings\TCSettings.xaml;Standalone\CSV2TCXML\Complete.xaml;Standalone\CSV2TCXML\Convert.xaml;Standalone\DB2CSV\DB2CSV.xaml;Standalone\CSV2TCXML\Csv2Tcxml.xaml;Standalone\TCXMXLImport\ManualTCXMLImport.xaml;
+DBImpot\ConvertAndImport.xaml;DBImpot\DataSelect.xaml;DBImpot\ImportOptions.xaml;DBImpot\ManualHeaders.xaml;DBImpot\Transform.xaml;Home.xaml;MainWindow.xaml;Mediators\CSV2TCXMLMediator.xaml;Mediators\Db2CsvMediator.xaml;Mediators\DBMediator.xaml;SettingsSelect.xaml;Settings\CSVSettings.xaml;Settings\DBSettings.xaml;Settings\ImportSettings.xaml;Settings\LoggerSettings.xaml;Settings\TCSettings.xaml;Standalone\CSV2TCXML\Complete.xaml;Standalone\CSV2TCXML\Convert.xaml;Standalone\DB2CSV\DB2CSV.xaml;Standalone\CSV2TCXML\Csv2Tcxml.xaml;Standalone\TCXMXLImport\ManualTCXMLImport.xaml;
 
-True
+False
 

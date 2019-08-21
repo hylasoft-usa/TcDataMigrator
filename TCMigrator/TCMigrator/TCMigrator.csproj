@@ -62,6 +62,9 @@
     <Compile Include="DB\DBProvider.cs" />
     <Compile Include="Enums\EncodingType.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Logging\LogSettings.cs" />
@@ -127,6 +130,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>TeamcenterSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SettingsSelect.xaml.cs">
+      <DependentUpon>SettingsSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\CSVSettings.xaml.cs">
       <DependentUpon>CSVSettings.xaml</DependentUpon>
     </Compile>
@@ -168,6 +174,8 @@
     <Compile Include="VisualUtilities\GridGenerator.cs" />
     <Compile Include="VisualUtilities\TextBlockGenerator.cs" />
     <Compile Include="VisualUtilities\TextBoxGenerator.cs" />
+    <Compile Include="VisualUtilities\UIMessage.cs" />
+    <Compile Include="VisualUtilities\UIMessageType.cs" />
     <Page Include="DBImpot\ConvertAndImport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DBImpot\Transform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Mediators\DBMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

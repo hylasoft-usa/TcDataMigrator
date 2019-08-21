@@ -1,0 +1,31 @@
+﻿<Page x:Class="TCMigrator.SettingsSelect"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsSelect">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Available Settings" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Top" FontSize="35" FontFamily="Segoe UI Semibold"/>
+        <Button Content="CSV Creation Settings" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        <Button Content="Database Settings" Grid.Column="1" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        <Button Content="Import Settings" Grid.Column="2" HorizontalAlignment="Stretch" Margin="20" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        <Button Content="Teamcenter Settings" Grid.Row="2" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        <Button Content="Logging Settings" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+        <Button Content="Home" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Margin="20"  VerticalAlignment="Stretch" Style="{StaticResource EngBlueBtn}"/>
+    </Grid>
+</Page>

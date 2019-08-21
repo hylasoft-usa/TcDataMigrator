@@ -54,3 +54,7 @@ C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\TCMigrator.p
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csprojAssemblyReference.cache
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Standalone\TCXMXLImport\ManualTCXMLImport.g.cs
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Standalone\TCXMXLImport\ManualTCXMLImport.baml
+C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Home.g.cs
+C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.g.cs
+C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Home.baml
+C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.baml
