@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Teamcenter;
+using TCMigrator.VisualUtilities;
 
 namespace TCMigrator.Standalone.TCXMXLImport
 {
@@ -63,55 +64,9 @@ namespace TCMigrator.Standalone.TCXMXLImport
         }
         private void import(object dir)
         {
-            var csv = new Converter();
-            csv.Import(xmlLocation,dir.ToString(),user,password,group);
-            bool? success = null;
-            List<String> output = new List<String>();
-            var iterations = 0;
-            while (!success.HasValue)
-            {
-                var textualData = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                if (textualData.Contains("The import operation has completed successfully"))
-                {
-                    success = true;
-                    csv.TCCommandPrompt.Exit();
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        _context.Post(AppendOutput, textualData.ToString());
-                        _context.Post(setComplete, null);
-                        csv.archive(dir.ToString());
-                    }
-                }
-                else if (textualData.Contains("Import Error"))
-                {
-                    success = false;
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        
-                        _context.Post(AppendError, textualData.ToString());
-                        _context.Post(setError, null);
-                        var data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                        while (!String.IsNullOrWhiteSpace(data)){
-                            _context.Post(AppendError, data.ToString());
-                            data = csv.TCCommandPrompt.Prompt.StandardOutput.ReadLine();
-                        }
-                        csv.TCCommandPrompt.Exit();
-                        csv.archive(dir.ToString());
-                    }
-
-                }
-                else
-                {
-                    if (!String.IsNullOrWhiteSpace(textualData))
-                    {
-                        _context.Post(AppendOutput, textualData.ToString());
-                    }
-                }
-                iterations++;
-                if (iterations > 400) { success = false; }
-
-            }
-
+            var csv = new Converter(callback);
+            if (csv.Import(xmlLocation, dir.ToString(), user, password, group)) { _context.Post(setComplete,new object()); }
+            else { _context.Post(setError, new object()); }
         }
         public void setComplete(object o)
         {
@@ -128,16 +83,44 @@ namespace TCMigrator.Standalone.TCXMXLImport
         public void GoHome(object sender, RoutedEventArgs e) {
             mw.NavigateHome();
         }
-        public void AppendOutput(object o)
-        {
-            Output.Inlines.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine);
-            Viewer.ScrollToBottom();
-
+        public void GoHome(object sender, RoutedEventArgs e) {
+            mw.NavigateHome();
         }
-        public void AppendError(object o)
+        private void callback(UIMessage m)
+        {
+            switch (m.MessageType)
+            {
+                case UIMessageType.SUCCESS:
+                    _context.Post(AppendSuccess, m);
+                    break;
+                case UIMessageType.ERROR:
+                    _context.Post(AppendError, m);
+                    break;
+                case UIMessageType.DATA:
+                    _context.Post(AppendData, m);
+                    break;
+            }
+        }
+        private void AppendError(object o)
         {
             Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkRed, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
             Viewer.ScrollToBottom();
+        }
+        private void AppendSuccess(object o)
+        {
+            Output.Inlines.Add(new Run(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + o + System.Environment.NewLine) { Foreground = Brushes.DarkGreen, FontWeight = FontWeights.Bold });
+            Output.Inlines.Add(Environment.NewLine);
+            Viewer.ScrollToBottom();
+        }
+        private void AppendData(object o)
+        {
+            if (!String.IsNullOrWhiteSpace(o.ToString()))
+            {
+                Output.Inlines.Add(o.ToString());
+                Output.Inlines.Add(Environment.NewLine);
+                Viewer.ScrollToBottom();
+            }
         }
     }
 }
