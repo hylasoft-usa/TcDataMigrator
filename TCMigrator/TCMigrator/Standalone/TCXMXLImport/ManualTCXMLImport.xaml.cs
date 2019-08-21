@@ -83,9 +83,6 @@ namespace TCMigrator.Standalone.TCXMXLImport
         public void GoHome(object sender, RoutedEventArgs e) {
             mw.NavigateHome();
         }
-        public void GoHome(object sender, RoutedEventArgs e) {
-            mw.NavigateHome();
-        }
         private void callback(UIMessage m)
         {
             switch (m.MessageType)
