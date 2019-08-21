@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\CSVColumn.cs" />
+    <Compile Include="Data\OracleColumnMap.cs" />
     <Compile Include="DB\DBProvider.cs" />
     <Compile Include="Enums\EncodingType.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
