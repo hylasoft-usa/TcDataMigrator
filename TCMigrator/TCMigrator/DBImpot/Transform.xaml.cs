@@ -34,6 +34,7 @@ namespace TCMigrator.DBImpot
             replacementDict = new Dictionary<string, string>();
             removalList = new List<String>();
             this.main = main;
+            rowsPerCsv.Text = main.getCurrentData().Entries.Count().ToString();
         }
         private void AddReplacementItem(object sender, RoutedEventArgs e)
         {
@@ -58,10 +59,11 @@ namespace TCMigrator.DBImpot
             TransformOptions to = new TransformOptions();
             to.addReplacements(createReplacementDict());
             to.addRemovals(createRemovalList());
-            if(Trim.IsChecked.HasValue && Trim.IsChecked.Value == true)
+            if (Trim.IsChecked.HasValue && Trim.IsChecked.Value == true)
             {
                 to.Trim = true;
             }
+            if (Int32.Parse(rowsPerCsv.Text) != main.getCurrentData().Entries.Count) { to.RowsPerFile = Int32.Parse(rowsPerCsv.Text); to.AreEntriesSplit = true; }
             main.updateData(transformer.transform(main.getCurrentData(), to));
             writeCSV(main.getCurrentData());
             main.advance();

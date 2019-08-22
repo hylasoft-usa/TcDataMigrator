@@ -68,7 +68,38 @@ namespace TCMigrator.Transform
         {
             ImportData d = replace(data, options, updateFunction);
             d = remove(d, options, updateFunction);
-            return trim(d, options);
+            d= trim(d, options);
+            if (options.AreEntriesSplit)
+            {
+                d=splitEntries(d, options);
+            }
+            return d;
+        }
+        private ImportData splitEntries(ImportData d, TransformOptions o)
+        {
+            List<List<string[]>> splitEntries = new List<List<string[]>>();
+            List<string[]> currentEntry = new List<String[]>();
+            d.AreEntriesSplit = true;
+            var rowCount = o.RowsPerFile;
+            for(var x = 0; x < d.Entries.Count; x++)
+            {
+                if (x + 1 % rowCount == 0)
+                {
+                    splitEntries.Add(currentEntry);
+                    currentEntry = new List<String[]>();
+                }
+                else
+                {
+                    currentEntry.Add(d.Entries[x]);
+                }
+            }
+            if (currentEntry.Count != 0)
+            {
+                splitEntries.Add(currentEntry);
+            }
+            d.SplitEntries = splitEntries;
+            return d;
+
         }
 
         public ImportData trim(ImportData data, TransformOptions options)

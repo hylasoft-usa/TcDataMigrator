@@ -61,6 +61,9 @@
     </ApplicationDefinition>
     <Compile Include="Data\CSVColumn.cs" />
     <Compile Include="Data\OracleColumnMap.cs" />
+    <Compile Include="DBImpot\SplitCsv.xaml.cs">
+      <DependentUpon>SplitCsv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\DBProvider.cs" />
     <Compile Include="Enums\EncodingType.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
@@ -191,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DBImpot\ManualHeaders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\SplitCsv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

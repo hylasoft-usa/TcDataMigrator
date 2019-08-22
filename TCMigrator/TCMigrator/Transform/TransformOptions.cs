@@ -12,16 +12,21 @@ namespace TCMigrator.Transform
         private List<String> remove;
         private bool trim;
         private bool skipFirstRow;
+        private int rowsPerFile;
+        private bool areEntriesSplit;
         public Dictionary<String, String> ReplacementDictionary { get { return this.replacement; } }
         public List<String> RemovalList { get { return this.remove; } }
         public bool Trim { get { return this.trim; } set { this.trim = value; } }
         public bool SkipFirstRow { get { return this.skipFirstRow; } set { this.skipFirstRow = value; } }
+        public int RowsPerFile { get { return rowsPerFile;} set { this.rowsPerFile = value; } }
+        public bool AreEntriesSplit { get { return this.areEntriesSplit; } set { this.areEntriesSplit = value; } }
 
         public TransformOptions()
         {
             replacement = new Dictionary<string, string>();
             remove = new List<String>();
             trim = true;
+            rowsPerFile = -1;
         }
         public void addReplacement(String replace, String replaceWith)
         {

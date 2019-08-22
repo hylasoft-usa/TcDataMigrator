@@ -21,24 +21,44 @@ namespace TCMigrator.CSV
         {
             this.separator = sep;
         }
-
+        /// <summary>
+        /// Writes CSV file(s) to the specified location in ImportData
+        /// </summary>
+        /// <param name="data">Formatted Import Data Object with proper Tranforms already complete</param>
+        /// <returns>If Entries are Split, returns the Directory containing written files, else returns the full file path to the single csv</returns>
         public string Write(ImportData data)
         {
-            var csvContent = buildCsv(data);
             var dir = Properties.CSVSettings.Default.CSVDirectory + data.InputTitle + @"\";
-            var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName;
+            var pathToReturn="";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
-            File.WriteAllText(fullName, csvContent);
-            return fullName;
+            if (!data.AreEntriesSplit)
+            {
+                var csvContent = buildCsv(data.Headers,data.Entries);
+                var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName+".csv";
+                File.WriteAllText(fullName, csvContent);
+                pathToReturn = fullName;
+            }
+            else
+            {
+                var splitEntries = data.SplitEntries;
+                for(var x=0; x < splitEntries.Count; x++)
+                {
+                    var csvContent = buildCsv(data.Headers, data.SplitEntries[x]);
+                    var name = dir + Properties.CSVSettings.Default.DefaultCSVName + (x + 1) + ".csv";
+                    File.WriteAllText(name, csvContent);
+                    pathToReturn = dir;
+                }
+            }
+            return pathToReturn;
         }
-        private String buildCsv(ImportData d) 
+        private String buildCsv(List<String> headers,List<String[]>entries) 
         {
-            var lines = d.Entries;
+            var lines = entries;
             StringBuilder b = new StringBuilder();
-            foreach(string s in d.Headers)
+            foreach(string s in headers)
             {
                 b.Append(s + this.separator);
             }

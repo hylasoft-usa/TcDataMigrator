@@ -19,6 +19,8 @@ namespace TCMigrator.Data
         public List<String> ColumnNames { get { return columnNames; } set { this.columnNames = value; } }
         public bool AreHeadersSet { get { return this.areHeadersSet; } }
         public string csvLocation { get; set; }
+        public bool AreEntriesSplit { get; set; }
+        public List<List<String[]>> SplitEntries { get; set; }
         public ImportData(String inputTitle)
         {
             this.inputTitle = inputTitle;

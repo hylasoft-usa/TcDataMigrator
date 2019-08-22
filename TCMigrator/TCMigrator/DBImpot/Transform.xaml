@@ -21,6 +21,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -33,9 +34,11 @@
             <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="Remove:" VerticalAlignment="Center" TextAlignment="Right"/>
             <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="Remove"/>
             <Button Content="Add" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center"   Click="RemoveNoReplace" Style="{StaticResource EngBlueBtn}"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="Rows Per File:" VerticalAlignment="Center" TextAlignment="Right"/>
+            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch"  Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="rowsPerCsv"/>
             <CheckBox Grid.Row="1" Grid.Column="3" Content="Trim White Space" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" x:Name="Trim" Style="{StaticResource RoundedTextbox}"/>
 
-            <ListView Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Stretch" ItemsSource="{Binding transforms}" x:Name="TransformList">
+            <ListView Grid.ColumnSpan="5" HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" VerticalAlignment="Stretch" ItemsSource="{Binding transforms}" x:Name="TransformList">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding id}"></GridViewColumn>
@@ -46,9 +49,9 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Grid.ColumnSpan="5" Content="Delete Selected" HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" VerticalAlignment="Top"  Click="DeleteSelected" Style="{StaticResource EngRedBtn}"/>
-            <Button Grid.ColumnSpan="2" Grid.Column="3" Content="Next Step" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" Click="PerformTransform" Style="{StaticResource EngGreenBtn}"/>
-            <Button Grid.ColumnSpan="2" Content="Back" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" Click="GoBack" Style="{StaticResource EngRedBtn}"/>
+            <Button Grid.ColumnSpan="5" Content="Delete Selected" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Top"  Click="DeleteSelected" Style="{StaticResource EngRedBtn}"/>
+            <Button Grid.ColumnSpan="2" Grid.Column="3" Content="Next Step" HorizontalAlignment="Stretch" Margin="5" Grid.Row="5" VerticalAlignment="Center" Click="PerformTransform" Style="{StaticResource EngGreenBtn}"/>
+            <Button Grid.ColumnSpan="2" Content="Back" HorizontalAlignment="Stretch" Margin="5" Grid.Row="5" VerticalAlignment="Center" Click="GoBack" Style="{StaticResource EngRedBtn}"/>
 
         </Grid>
     </Grid>
