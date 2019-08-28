@@ -63,8 +63,10 @@ namespace TCMigrator.DBImpot
             }
             if (Int32.Parse(rowsPerCsv.Text) != main.getCurrentData().Entries.Count) { to.RowsPerFile = Int32.Parse(rowsPerCsv.Text); to.AreEntriesSplit = true; }
             main.updateData(transformer.transform(main.getCurrentData(), to));
-            writeCSV(main.getCurrentData());
-            main.advance();
+            if (writeCSV(main.getCurrentData()))
+            {
+                main.advance();
+            }
         }
         private void GoBack(object sender, RoutedEventArgs e) { }
         private Dictionary<String, String> createReplacementDict()
@@ -91,10 +93,19 @@ namespace TCMigrator.DBImpot
             }
             return remove;
         }
-        private void writeCSV(ImportData d)
+        private bool writeCSV(ImportData d)
         {
             ICsv csv = new CSV.GenericCsv();
-            csv.Write(d);
+            try
+            {
+                csv.Write(d);
+                return true;
+            }catch(Exception e)
+            {
+                var m = MessageBox.Show(e.Message, "Please Close this file to Continue", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
         }
 
         private void ShowFilters(object sender, RoutedEventArgs e)
