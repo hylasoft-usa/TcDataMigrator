@@ -106,7 +106,7 @@ namespace TCMigrator.Standalone.CSV2TCXML
 
         private void GoHome(Object sender, RoutedEventArgs e)
         {
-
+            main.Home();
         }
         private string getOutputLocation(string importLocation)
         {
@@ -174,6 +174,10 @@ namespace TCMigrator.Standalone.CSV2TCXML
             {
                 Btn.IsEnabled = false;
             }
+        }
+        public void Back(object sender, RoutedEventArgs e)
+        {
+            main.retreat();
         }
     }
 }

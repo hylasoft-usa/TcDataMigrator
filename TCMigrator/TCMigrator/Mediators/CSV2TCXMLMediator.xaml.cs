@@ -38,6 +38,7 @@ namespace TCMigrator.Mediators
             data = new ImportData(String.Format("ManualImport_{0}", DateTime.Now));
             step = 1;
             ContentWindow.Content = new Csv2Tcxml(this);
+            o = new CSVConverterOptions();
         }
 
         public void advance()
@@ -45,7 +46,10 @@ namespace TCMigrator.Mediators
             step++;
             LazyLoadClass();
         }
-
+        public void Home()
+        {
+            mw.NavigateHome();
+        }
         public ImportData getCurrentData()
         {
             return this.data;

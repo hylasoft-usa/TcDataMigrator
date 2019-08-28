@@ -31,7 +31,7 @@ namespace TCMigrator.Standalone.CSV2TCXML
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            main.Home();
         }
     }
 }

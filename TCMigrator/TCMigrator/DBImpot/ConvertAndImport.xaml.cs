@@ -59,6 +59,10 @@ namespace TCMigrator.DBImpot
             ConvertThreadData ctd = new ConvertThreadData() { importLocation = importLocation, outTCXML = OutputTCXMLLocation, logLocation = conversionLogFileLocation };
             startThreads(ctd);
         }
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            main.retreat();
+        }
         public void startThreads(ConvertThreadData ctd)
         {
             Thread t1 = new Thread(performCmdCalls);

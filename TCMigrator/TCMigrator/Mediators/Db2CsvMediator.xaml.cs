@@ -88,6 +88,10 @@ namespace TCMigrator.Mediators
                     break;
             }
         }
+        public void Home()
+        {
+            mw.NavigateHome();
+        }
         public void setTransformOptions(TransformOptions to)
         {
             this.to = to;

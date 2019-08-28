@@ -19,5 +19,6 @@ namespace TCMigrator.Interfaces
         CSVConverterOptions getCurrentImportOptions();
         void setTransformOptions(TransformOptions to);
         TransformOptions getTransformOptions();
+        void Home();
     }
 }
