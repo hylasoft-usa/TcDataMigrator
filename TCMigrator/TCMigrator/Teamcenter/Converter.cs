@@ -90,6 +90,8 @@ namespace TCMigrator.Teamcenter
         public bool Import(String directory)
         {
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
+            cmd.SendCommand("SET TIE_DEBUG=4");
+            cmd.SendCommand("SET LOG_BATCH_SIZE=100");
             var command = String.Format(@"tcxml_import -file=import.csv -bulk_load -bypass_inferdelete");
             cmd.SendCommand(command);
             var success= awaitImportCompletion();
@@ -100,6 +102,8 @@ namespace TCMigrator.Teamcenter
         {
             cmd.SendCommand(getDriveLetter(directory));
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
+            cmd.SendCommand("SET TIE_DEBUG=4");
+            cmd.SendCommand("SET LOG_BATCH_SIZE=100");
             var command = String.Format(@"tcxml_import -file=import.csv.xml -u={0} -p={1} -g={2} -bulk_load -bypass_inferdelete",user,password, group);
             cmd.SendCommand(command);
             var success = awaitImportCompletion();
@@ -111,6 +115,8 @@ namespace TCMigrator.Teamcenter
         {
             cmd.SendCommand(getDriveLetter(directory));
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
+            cmd.SendCommand("SET TIE_DEBUG=4");
+            cmd.SendCommand("SET LOG_BATCH_SIZE=1");
             var command = String.Format(@"tcxml_import -file={0} -u={1} -p={2} -g={3} -bulk_load -bypass_inferdelete", path,user, password, group);
             cmd.SendCommand(command);
             var success = awaitImportCompletion();
