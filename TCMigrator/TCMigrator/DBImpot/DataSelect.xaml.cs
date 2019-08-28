@@ -18,6 +18,7 @@ namespace TCMigrator.DBImpot
         {
             InitializeComponent();
             this.main = main;
+            checkCanGoForward();
         }
 
         private void InitTables()
@@ -30,6 +31,7 @@ namespace TCMigrator.DBImpot
                 Tables.Items.Add(s);
             }
             Loading.Visibility = Visibility.Hidden;
+            checkCanGoForward();
         }
 
         private void LockColumnSelection(object sender, RoutedEventArgs e)
@@ -38,6 +40,7 @@ namespace TCMigrator.DBImpot
             SelectedCols.IsEnabled = false;
             SelectCol.IsEnabled = false;
             DeselectCol.IsEnabled = false;
+            checkCanGoForward();
         }
         private void unlockColumnSelection(object sender, RoutedEventArgs e)
         {
@@ -45,6 +48,7 @@ namespace TCMigrator.DBImpot
             SelectedCols.IsEnabled = true;
             SelectCol.IsEnabled = true;
             DeselectCol.IsEnabled = true;
+            checkCanGoForward();
         }
 
         private void GetColumns(object sender, SelectionChangedEventArgs e)
@@ -61,7 +65,7 @@ namespace TCMigrator.DBImpot
                     AvailableCols.Items.Add(s);
                 }
             }
-
+            checkCanGoForward();
         }
         public void checkTablesLoaded(object sender, EventArgs e)
         {
@@ -79,6 +83,7 @@ namespace TCMigrator.DBImpot
                 SelectedCols.Items.Add((String)AvailableCols.SelectedItem);
                 AvailableCols.Items.Remove(AvailableCols.SelectedItem);
             }
+            checkCanGoForward();
 
         }
 
@@ -90,7 +95,7 @@ namespace TCMigrator.DBImpot
                 AvailableCols.Items.Add((String)SelectedCols.SelectedItem);
                 SelectedCols.Items.Remove(SelectedCols.SelectedItem);
             }
-
+            checkCanGoForward();
         }
 
         private void FormatImportData(object sender, RoutedEventArgs e)
@@ -124,6 +129,17 @@ namespace TCMigrator.DBImpot
                 }
             }
             return cols;
+        }
+        private void checkCanGoForward()
+        {
+            if(getSelectedColList().Count>0 && Tables.SelectedIndex > -1)
+            {
+                advance.IsEnabled = true;
+            }
+            else
+            {
+                advance.IsEnabled = false;
+            }
         }
         private List<String> getHeaders(List<String> cols)
         {

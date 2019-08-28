@@ -35,9 +35,10 @@ namespace TCMigrator.Standalone.TCXMXLImport
         {
             this.mw = mw;
             InitializeComponent();
+            checkIsSubmittable();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DoImport(object sender, RoutedEventArgs e)
         {
             var TcXmlLocation = XmlLocation.Text;
             xmlLocation = TcXmlLocation;
@@ -71,7 +72,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
         public void setComplete(object o)
         {
             btn.Content = "Home";
-            btn.Click -= Button_Click;
+            btn.Click -= DoImport;
             btn.Click += GoHome;
             btn.Style = FindResource("EngBlueBtn") as Style;
         }
@@ -117,6 +118,27 @@ namespace TCMigrator.Standalone.TCXMXLImport
                 Output.Inlines.Add(o.ToString());
                 Output.Inlines.Add(Environment.NewLine);
                 Viewer.ScrollToBottom();
+            }
+        }
+
+        private void onTextChanged(object sender, TextChangedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
+
+        private void onPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
+        private void checkIsSubmittable()
+        {
+            if(!String.IsNullOrWhiteSpace(XmlLocation.Text) &&!String.IsNullOrEmpty(TcUser.Text) && !String.IsNullOrWhiteSpace(TcPass.Password) && !String.IsNullOrEmpty(TcGroup.Text))
+            {
+                btn.IsEnabled = true;
+            }
+            else
+            {
+                btn.IsEnabled = false;
             }
         }
     }

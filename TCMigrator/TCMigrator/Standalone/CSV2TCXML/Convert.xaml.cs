@@ -44,6 +44,7 @@ namespace TCMigrator.Standalone.CSV2TCXML
         {
             User.Text = Properties.TeamcenterSettings.Default.TC_USER;
             Group.Text = Properties.TeamcenterSettings.Default.TC_GROUP;
+            checkIsSubmittable();
         }
 
         private void Import(object sender, RoutedEventArgs e)
@@ -151,6 +152,27 @@ namespace TCMigrator.Standalone.CSV2TCXML
                 Output.Inlines.Add(o.ToString());
                 Output.Inlines.Add(Environment.NewLine);
                 Viewer.ScrollToBottom();
+            }
+        }
+
+        private void onTextChanged(object sender, TextChangedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
+
+        private void onPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
+        private void checkIsSubmittable()
+        {
+            if(!String.IsNullOrWhiteSpace(User.Text) && !String.IsNullOrWhiteSpace(Group.Text) && !String.IsNullOrWhiteSpace(Password.Password))
+            {
+                Btn.IsEnabled = true;
+            }
+            else
+            {
+                Btn.IsEnabled = false;
             }
         }
     }

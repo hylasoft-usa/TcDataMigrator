@@ -69,7 +69,7 @@
                 <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="GroupByType"/>
                 <TextBox Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="LocalTimeOffset"/>
             </Grid>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" TextChanged="textChanged"/>
             <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvSep"/>
             <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvQuote"/>
             <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvEscape"/>
@@ -89,7 +89,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Content="Proceed" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="SaveImportOptions"/>
+            <Button Grid.Column="3" Content="Proceed" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="SaveImportOptions" x:Name="advance"/>
             <Button Content="Back" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" Click="GoBack"/>
         </Grid>
 

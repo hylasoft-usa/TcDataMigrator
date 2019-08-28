@@ -26,14 +26,14 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TCXML Location:" VerticalAlignment="Center" TextAlignment="Right"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="XmlLocation" TabIndex="1"/>         
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="XmlLocation" TabIndex="1" TextChanged="onTextChanged"/>         
             <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Username:" VerticalAlignment="Center" TextAlignment="Right"/>
-            <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TcUser" TabIndex="2"/>           
+            <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TcUser" TabIndex="2" TextChanged="onTextChanged"/>           
             <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Margin="5" TextWrapping="Wrap" Text="TCXML Password:" VerticalAlignment="Center" TextAlignment="Right"/>
-            <PasswordBox Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" Height="23" Margin="5" VerticalAlignment="Center" x:Name="TcPass" TabIndex="3"/>            
+            <PasswordBox Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" Height="23" Margin="5" VerticalAlignment="Center" x:Name="TcPass" TabIndex="3" PasswordChanged="onPasswordChanged"/>            
             <TextBlock HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" TextWrapping="Wrap" Text="TC Group" VerticalAlignment="Center" TextAlignment="Right"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TcGroup" TabIndex="4"/>
-            <Button Content="Import" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" x:Name="btn" Style="{StaticResource EngGreenBtn}" TabIndex="5"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TcGroup" TabIndex="4" TextChanged="onTextChanged"/>
+            <Button Content="Import" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" Click="DoImport" x:Name="btn" Style="{StaticResource EngGreenBtn}" TabIndex="5" />
             
         </Grid>
         <GroupBox Header="Output" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="1" Margin="5" Grid.Row="1" Grid.RowSpan="2">

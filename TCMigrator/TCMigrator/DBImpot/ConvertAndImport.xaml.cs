@@ -45,6 +45,7 @@ namespace TCMigrator.DBImpot
         {
             User.Text = Properties.TeamcenterSettings.Default.TC_USER;
             Group.Text = Properties.TeamcenterSettings.Default.TC_GROUP;
+            checkIsSubmittable();
         }
 
         private void Import(object sender, RoutedEventArgs e)
@@ -84,6 +85,17 @@ namespace TCMigrator.DBImpot
                 case UIMessageType.DATA:
                     _context.Post(AppendData, m);
                     break;
+            }
+        }
+        private void checkIsSubmittable()
+        {
+            if(!String.IsNullOrWhiteSpace(User.Text) && !String.IsNullOrWhiteSpace(Group.Text) && !String.IsNullOrWhiteSpace(Password.Password))
+            {
+                importBtn.IsEnabled = true;
+            }
+            else
+            {
+                importBtn.IsEnabled = false;
             }
         }
         private void convert(ConvertThreadData ctd, Converter csv)
@@ -142,6 +154,15 @@ namespace TCMigrator.DBImpot
             public String logLocation { get; set; }
         }
 
+        private void onTextChanged(object sender, TextChangedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
+
+        private void onPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            checkIsSubmittable();
+        }
     }
 }
 

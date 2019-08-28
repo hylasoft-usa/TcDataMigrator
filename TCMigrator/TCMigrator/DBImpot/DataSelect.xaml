@@ -23,7 +23,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <GroupBox Header="Select a Table" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" Margin="5">
-                <ComboBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" x:Name="Tables" SelectionChanged="GetColumns" DropDownOpened="checkTablesLoaded"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" x:Name="Tables" SelectionChanged="GetColumns" DropDownOpened="checkTablesLoaded" />
             </GroupBox>
             <GroupBox Header="Import Options" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" Margin="5" Grid.Column="1">
                 <Grid>
