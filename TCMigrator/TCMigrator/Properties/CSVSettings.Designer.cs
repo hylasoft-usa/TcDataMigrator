@@ -34,7 +34,7 @@ namespace TCMigrator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("import.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("import")]
         public string DefaultCSVName {
             get {
                 return ((string)(this["DefaultCSVName"]));

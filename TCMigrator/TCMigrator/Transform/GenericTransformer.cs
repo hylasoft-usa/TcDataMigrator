@@ -68,7 +68,95 @@ namespace TCMigrator.Transform
         {
             ImportData d = replace(data, options, updateFunction);
             d = remove(d, options, updateFunction);
-            return trim(d, options);
+            d= trim(d, options);
+            d = performCompoundFiltering(d, options);
+            d = performComparisonFiltering(d, options);
+            d = filterEntries(d, options);
+            if (options.AreEntriesSplit)
+            {
+                d=splitEntries(d, options);
+            }
+            return d;
+        }
+        private ImportData performCompoundFiltering(ImportData d, TransformOptions to)
+        {
+            if (to.CompoundFilters != null && to.CompoundFilters.Count > 0)
+            {
+                foreach (CompoundFilter f in to.CompoundFilters)
+                {
+                    var dataset = new List<string[]>();
+                    List<string[]> matches = new List<string[]>();
+                    d.Entries = f.Filter(d.Entries, out matches, true);
+                    d.AddFilteredEntryList(matches);
+                }
+                return d;
+            }
+            return d;
+        }
+        private ImportData performComparisonFiltering(ImportData d, TransformOptions to)
+        {
+            if(to.ComparisonFilters!=null && to.ComparisonFilters.Count > 0)
+            {
+                foreach (ComparisonFilter f in to.ComparisonFilters)
+                {
+                    List<String[]> thisSet = new List<String[]>();
+                    for (var x = 0; x < d.Entries.Count; x++)
+                    {
+                        var entry = d.Entries[x];
+                        if (f.isMatch(entry))
+                        {
+                            thisSet.Add(entry);
+                        }
+                    }
+                    d.AddFilteredEntryList(thisSet);
+                    foreach (string[] s in thisSet)
+                    {
+                        d.Entries.Remove(s);
+                    }
+                }
+                return d;
+            }
+            return d;
+        }
+        private ImportData splitEntries(ImportData d, TransformOptions o)
+        {
+            List<string[]> currentEntry = new List<String[]>();
+            var rowCount = o.RowsPerFile;
+            for(var x = 0; x < d.Entries.Count; x++)
+            {
+                currentEntry.Add(d.Entries[x]);
+                if (x + 1 % rowCount == 0)
+                {
+                    d.AddSplitEntrySet(currentEntry);
+                    currentEntry = new List<String[]>();
+                }
+            }
+            if (currentEntry.Count != 0)
+            {
+                d.SplitEntries.Add(currentEntry);
+            }
+            return d;
+
+        }
+        private ImportData filterEntries(ImportData d, TransformOptions o)
+        {
+            foreach(ColumnFilter f in o.ColumnFilters)
+            {
+                List<String[]> thisSet = new List<String[]>();
+                for (var x = 0; x < d.Entries.Count; x++)
+                {
+                    var entry = d.Entries[x];
+                    if (f.isMatch(entry))
+                    {
+                        thisSet.Add(entry);
+                    }
+                }
+                d.AddFilteredEntryList(thisSet);
+                foreach (string[] s in thisSet) {
+                    d.Entries.Remove(s);
+                        }
+            }
+            return d;
         }
 
         public ImportData trim(ImportData data, TransformOptions options)

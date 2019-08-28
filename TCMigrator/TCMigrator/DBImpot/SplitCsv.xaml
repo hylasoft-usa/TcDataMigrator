@@ -1,0 +1,109 @@
+﻿<Page x:Class="TCMigrator.DBImpot.SplitCsv"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator.DBImpot"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SplitCsv">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Filter By:" TextAlignment="Right" Margin="5"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="Column:" TextAlignment="Right" Margin="5"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="FilterType:" TextAlignment="Right" Margin="5"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="Value:" TextAlignment="Right" Margin="5,0,5,8"  Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" x:Name="SingleFilterTypeLabel" />
+            <Button Content="Add Filter" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="5" VerticalAlignment="Center" Style="{StaticResource EngBlueBtn}" Click="AddSingleFilter" IsEnabled="False" x:Name="btnAddSingle"/>
+            <TextBlock Text="Individual Filter" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" TextAlignment="Center"/>
+            <Label Content="?" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Background="CornflowerBlue" Foreground="White" BorderBrush="Black" ToolTip="Individual Filters Create Individual CSV Files. Each CSV Created Corresponds to A Single Filter Condition when using Individual filters." Style="{DynamicResource HelpStyle}" Height="25" Width="25"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" x:Name="singleFilterType" SelectionChanged="OnSingleFilterTypeChanged"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" x:Name="columnName" SelectionChanged="OnSingleSelectChanged"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" VerticalAlignment="Center" x:Name="FilterType" SelectionChanged="OnSingleSelectChanged"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" x:Name="SingleFilterCol2" SelectionChanged="OnSingleSelectChanged"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SingleFilterValue"/>
+            <ListView Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="6" VerticalAlignment="Stretch" x:Name="SingleFilterDisplay">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Column To Filter" Width="130" DisplayMemberBinding="{Binding toFilter}"/>
+                        <GridViewColumn Header="Filter Type" Width="120" DisplayMemberBinding="{Binding type}"/>
+                        <GridViewColumn Header="Filter Against" Width="125" DisplayMemberBinding="{Binding filterAgainst}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Compound Filter" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" TextAlignment="Center"/>
+            <Label Content="?" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Background="CornflowerBlue" BorderBrush="Black" Foreground="White" ToolTip="Compound Filters Allow for the grouping of multiple filters. Items in the resulting CSV files must match filters provided in the filter group. Each 'Filter Group' creates an individual CSV File" Style="{DynamicResource HelpStyle}" Height="25" Width="25"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" x:Name="compoundColumnName" SelectionChanged="OnCompoundSelectChanged"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" x:Name="compoundFilterType" SelectionChanged="OnCompoundSelectChanged"/>
+            <TextBlock Text="FilterType:" TextAlignment="Right" Margin="5"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="Column:" TextAlignment="Right" Margin="5"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="Value:" TextAlignment="Right" Margin="5"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBlock Text="Join Type:" TextAlignment="Right" Margin="5"  Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" IsEnabled="False"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" x:Name="compoundJoinType" IsEnabled="False" SelectionChanged="OnCompoundSelectChanged"/>
+
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="compoundFilterText"/>
+            <ListView Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="6" VerticalAlignment="Stretch" x:Name="compoundFilters" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Group #" Width="50" DisplayMemberBinding="{Binding Group}"/>
+                        <GridViewColumn Header="Filter Column" Width="120" DisplayMemberBinding="{Binding toFilter}"/>
+                        <GridViewColumn Header="Filter Type" Width="120" DisplayMemberBinding="{Binding FilterType}"/>
+                        <GridViewColumn Header="Filter Value" Width="120" DisplayMemberBinding="{Binding filterValue}"/>
+                        <GridViewColumn Header="Join" Width="120" DisplayMemberBinding="{Binding JoinType}"/>
+                    </GridView>
+                </ListView.View>
+                
+            </ListView>
+
+
+
+            <Grid Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AddGroupFilter" Content="Add To Group" HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{StaticResource EngBlueBtn}" Click="AddToGroup" Margin="5" IsEnabled="False"></Button>
+                <Button Content="Close Group"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" Click="CloseGroup" Margin="5" IsEnabled="False" x:Name="btnCloseGroup"></Button>
+            </Grid>
+        </Grid>
+        <Button Content="Close and Apply" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource EngGreenBtn}" Click="CloseAndApply"/>
+        <Button Content="Cancel" HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" Click="Close"/>
+    </Grid>
+</Page>
