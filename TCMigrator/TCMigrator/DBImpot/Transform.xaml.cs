@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Data;
+using TCMigrator.Enums;
 using TCMigrator.Interfaces;
 using TCMigrator.Transform;
 
@@ -28,9 +29,12 @@ namespace TCMigrator.DBImpot
         List<String> disAllowList;
         List<TransformDescriptor> transforms;
         IPageMediator main;
+        List<ColumnFilter> filters;
+        public IPageMediator Main { get; }
         public Transform(IPageMediator main)
         {
             InitializeComponent();
+            filters = new List<ColumnFilter>();
             replacementDict = new Dictionary<string, string>();
             removalList = new List<String>();
             this.main = main;
@@ -43,12 +47,6 @@ namespace TCMigrator.DBImpot
             Replace.Text = "";
             With.Text = "";
         }
-        private void RemoveNoReplace(object sender, RoutedEventArgs e)
-        {
-            TransformList.Items.Add(new TransformDescriptor() { id = TransformList.Items.Count, type = Enums.TransformType.REMOVE, value = Remove.Text, replacement = "" });
-            removalList.Add(Remove.Text);
-            Remove.Text = "";
-        }
         private void DeleteSelected(object sender, RoutedEventArgs e)
         {
             TransformList.Items.Remove(TransformList.SelectedItem);
@@ -56,7 +54,7 @@ namespace TCMigrator.DBImpot
         private void PerformTransform(object sender, RoutedEventArgs e)
         {
             var transformer = new GenericTransformer();
-            TransformOptions to = new TransformOptions();
+            TransformOptions to = main.getTransformOptions();
             to.addReplacements(createReplacementDict());
             to.addRemovals(createRemovalList());
             if (Trim.IsChecked.HasValue && Trim.IsChecked.Value == true)
@@ -97,6 +95,12 @@ namespace TCMigrator.DBImpot
         {
             ICsv csv = new CSV.GenericCsv();
             csv.Write(d);
+        }
+
+        private void ShowFilters(object sender, RoutedEventArgs e)
+        {
+            var Pop = new SplitWindow(main);
+            Pop.Show();
         }
     }
 }

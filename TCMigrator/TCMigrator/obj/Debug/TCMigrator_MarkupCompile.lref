@@ -4,6 +4,7 @@ FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DB
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\DataSelect.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\ImportOptions.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\ManualHeaders.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\SplitCsv.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\Transform.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Home.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\MainWindow.xaml;;
@@ -21,5 +22,5 @@ FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\St
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Standalone\DB2CSV\DB2CSV.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Standalone\CSV2TCXML\Csv2Tcxml.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Standalone\TCXMXLImport\ManualTCXMLImport.xaml;;
-FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\SplitCsv.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\SplitWindow.xaml;;
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TCMigrator.Data;
 using TCMigrator.Teamcenter;
+using TCMigrator.Transform;
 
 namespace TCMigrator.Interfaces
 {
@@ -16,5 +17,7 @@ namespace TCMigrator.Interfaces
         ImportData getCurrentData();
         void updateImportOptions(CSVConverterOptions o);
         CSVConverterOptions getCurrentImportOptions();
+        void setTransformOptions(TransformOptions to);
+        TransformOptions getTransformOptions();
     }
 }

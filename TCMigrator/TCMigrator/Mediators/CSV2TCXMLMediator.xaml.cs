@@ -16,6 +16,7 @@ using TCMigrator.Data;
 using TCMigrator.Interfaces;
 using TCMigrator.Standalone.DB2CSV;
 using TCMigrator.Teamcenter;
+using TCMigrator.Transform;
 
 namespace TCMigrator.Mediators
 {
@@ -28,6 +29,7 @@ namespace TCMigrator.Mediators
         private ImportData data;
         private int step;
         private CSVConverterOptions o;
+        private TransformOptions to;
         private MainWindow mw;
         public CSV2TCXMLMediator(MainWindow mw)
         {
@@ -80,6 +82,15 @@ namespace TCMigrator.Mediators
                     ContentWindow.Content = new Standalone.CSV2TCXML.Convert(this);
                     break;
             }
+        }
+        public void setTransformOptions(TransformOptions to)
+        {
+            this.to = to;
+        }
+        public TransformOptions getTransformOptions()
+        {
+            if (this.to == null) { this.to = new TransformOptions(); }
+            return this.to;
         }
     }
 }

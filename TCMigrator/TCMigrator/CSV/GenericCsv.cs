@@ -34,12 +34,27 @@ namespace TCMigrator.CSV
             {
                 Directory.CreateDirectory(dir);
             }
+            if(data.FilteredEntries!=null && data.FilteredEntries.Count > 0)
+            {
+                int x = 1;
+                foreach(List<String[]> filtered in data.FilteredEntries)
+                {
+                    if (filtered.Count > 0)
+                    {
+                        var csvContent = buildCsv(data.Headers, filtered);
+                        var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName + "_FILTERED_ENTRIES_" + x + ".csv";
+                        File.WriteAllText(fullName, csvContent);
+                        pathToReturn = dir;
+                        x++;
+                    }
+                }
+            }
             if (!data.AreEntriesSplit)
             {
                 var csvContent = buildCsv(data.Headers,data.Entries);
                 var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName+".csv";
                 File.WriteAllText(fullName, csvContent);
-                pathToReturn = fullName;
+                pathToReturn = dir;
             }
             else
             {
@@ -47,7 +62,7 @@ namespace TCMigrator.CSV
                 for(var x=0; x < splitEntries.Count; x++)
                 {
                     var csvContent = buildCsv(data.Headers, data.SplitEntries[x]);
-                    var name = dir + Properties.CSVSettings.Default.DefaultCSVName + (x + 1) + ".csv";
+                    var name = dir + Properties.CSVSettings.Default.DefaultCSVName + "_SPLIT_ENTRIES_"+(x + 1) + ".csv";
                     File.WriteAllText(name, csvContent);
                     pathToReturn = dir;
                 }
