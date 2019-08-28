@@ -19,7 +19,7 @@
                 <GridView>
                     <GridViewColumn Header="Column Name" DisplayMemberBinding="{Binding ColumnName}" Width="150"></GridViewColumn>
                     <GridViewColumn Header="Example Data" DisplayMemberBinding="{Binding ExampleData}" Width="150"></GridViewColumn>
-                    <GridViewColumn Header="CSV Header" Width="400">
+                    <GridViewColumn Header="CSV Header" Width="600">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Text="{Binding Header}" TextWrapping="Wrap" Width="350" Margin="0" TabIndex="{Binding Index}"></TextBox>

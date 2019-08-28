@@ -65,6 +65,7 @@ namespace TCMigrator.Standalone.DB2CSV
                     FileEncoding.SelectedItem = et.ToString();
                 }
             }
+            checkSubmittable();
 
         }
 
@@ -100,5 +101,21 @@ namespace TCMigrator.Standalone.DB2CSV
             main.advance();
         }
         private void GoBack(object sender, RoutedEventArgs e) { }
+
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+            checkSubmittable();
+        }
+        private void checkSubmittable()
+        {
+            if (!string.IsNullOrWhiteSpace(CsvPath.Text))
+            {
+                advance.IsEnabled = true;
+            }
+            else
+            {
+                advance.IsEnabled = false;
+            }
+        }
     }
 }

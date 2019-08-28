@@ -102,5 +102,17 @@ namespace TCMigrator.DBImpot
             var Pop = new SplitWindow(main);
             Pop.Show();
         }
+
+        private void onTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!String.IsNullOrEmpty(Replace.Text) && !String.IsNullOrEmpty(With.Text))
+            {
+                btnAddReplacement.IsEnabled = true;
+            }
+            else
+            {
+                btnAddReplacement.IsEnabled = false;
+            }
+        }
     }
 }
