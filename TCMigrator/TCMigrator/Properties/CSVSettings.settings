@@ -6,7 +6,7 @@
       <Value Profile="(Default)">D:\EngineeringUSA\CSV\</Value>
     </Setting>
     <Setting Name="DefaultCSVName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">import.csv</Value>
+      <Value Profile="(Default)">import</Value>
     </Setting>
     <Setting Name="CSVSeparator" Type="System.Char" Scope="Application">
       <Value Profile="(Default)">|</Value>

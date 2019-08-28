@@ -118,3 +118,7 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csproj.GenerateResource.cache
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\SplitCsv.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\SplitCsv.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SplitWindow.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SplitWindow.baml

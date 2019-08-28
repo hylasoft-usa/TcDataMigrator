@@ -59,10 +59,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\ColumnFilter.cs" />
+    <Compile Include="Data\ComparisonFilter.cs" />
+    <Compile Include="Data\CompoundFilter.cs" />
     <Compile Include="Data\CSVColumn.cs" />
+    <Compile Include="Data\IColumnFilterable.cs" />
     <Compile Include="Data\OracleColumnMap.cs" />
+    <Compile Include="DBImpot\SplitCsv.xaml.cs">
+      <DependentUpon>SplitCsv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\DBProvider.cs" />
+    <Compile Include="Enums\CompoundFilterType.cs" />
     <Compile Include="Enums\EncodingType.cs" />
+    <Compile Include="Enums\FilterType.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -151,6 +160,9 @@
     <Compile Include="Settings\TCSettings.xaml.cs">
       <DependentUpon>TCSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SplitWindow.xaml.cs">
+      <DependentUpon>SplitWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Standalone\CSV2TCXML\Complete.xaml.cs">
       <DependentUpon>Complete.xaml</DependentUpon>
     </Compile>
@@ -191,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DBImpot\ManualHeaders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBImpot\SplitCsv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Settings\TCSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SplitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

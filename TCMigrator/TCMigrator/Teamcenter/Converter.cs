@@ -75,6 +75,18 @@ namespace TCMigrator.Teamcenter
             }
             return success;
         }
+        public void ConvertAllWithParams(string searchDir, List<String> parameters, bool shouldArchive = false)
+        {
+            string[] files= Directory.GetFiles(searchDir, "*.csv", SearchOption.TopDirectoryOnly);
+            List<String> paths = new List<String>();
+            foreach(String path in files)
+            {
+                string xmlPath = "";
+                ConvertWithParameters(path, parameters, out xmlPath, false);
+                csvCompleteSuccess = null;
+            }
+            
+        }
         public bool Import(String directory)
         {
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
@@ -95,16 +107,31 @@ namespace TCMigrator.Teamcenter
             return success;
 
     }
-        public bool Import(String path,String directory, string user, string password, string group)
+        public bool Import(String path,String directory, string user, string password, string group,bool shouldArchive=false)
         {
             cmd.SendCommand(getDriveLetter(directory));
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
             var command = String.Format(@"tcxml_import -file={0} -u={1} -p={2} -g={3} -bulk_load -bypass_inferdelete", path,user, password, group);
             cmd.SendCommand(command);
             var success = awaitImportCompletion();
-            archive(directory);
+            if (shouldArchive)
+            {
+                archive(directory);
+            }
             return success;
 
+        }
+        public bool ImportAll(String path, String directory, string user, string password, string group)
+        {
+            bool allPassed = true;
+            string[] files = Directory.GetFiles(directory, "*.csv.xml", SearchOption.TopDirectoryOnly);
+            foreach(string pathToXml in files)
+            {
+                if(!Import(pathToXml, directory, user, password, group)) { allPassed = false; }
+                importCompleteSuccess = null;
+            }
+            archive(directory);
+            return allPassed;
         }
         public void archive(string path)
         {

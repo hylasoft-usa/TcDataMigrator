@@ -16,6 +16,7 @@ using TCMigrator.Data;
 using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
 using TCMigrator.Teamcenter;
+using TCMigrator.Transform;
 
 namespace TCMigrator.Mediators
 {
@@ -29,6 +30,7 @@ namespace TCMigrator.Mediators
         private CSVConverterOptions options;
         private int step;
         MainWindow mw;
+        private TransformOptions to;
         public DBMediator(MainWindow mw)
         {
             InitializeComponent();
@@ -88,6 +90,15 @@ namespace TCMigrator.Mediators
                     ContentWindow.Content = new ConvertAndImport(this);
                     break;
             }
+        }
+        public void setTransformOptions(TransformOptions to)
+        {
+            this.to = to;
+        }
+        public TransformOptions getTransformOptions()
+        {
+            if (this.to == null) { this.to = new TransformOptions(); }
+            return this.to;
         }
     }
 }

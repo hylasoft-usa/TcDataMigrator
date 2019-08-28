@@ -65,7 +65,7 @@ namespace TCMigrator.Standalone.TCXMXLImport
         private void import(object dir)
         {
             var csv = new Converter(callback);
-            if (csv.Import(xmlLocation, dir.ToString(), user, password, group)) { _context.Post(setComplete,new object()); }
+            if (csv.ImportAll(xmlLocation, dir.ToString(), user, password, group)) { _context.Post(setComplete,new object()); }
             else { _context.Post(setError, new object()); }
         }
         public void setComplete(object o)

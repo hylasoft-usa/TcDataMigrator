@@ -34,11 +34,7 @@ namespace TCMigrator.DBImpot
         private string user;
         private string password;
         private string group;
-        private bool shouldQuit = false;
-        private bool? operationSuccess;
-        private List<Run> outputRuns = new List<Run>();
-        private bool? csvCompleteSuccess;
-        private bool? importCompleteSuccess;
+
         public ConvertAndImport(IPageMediator main)
         {
             InitializeComponent();
@@ -56,7 +52,7 @@ namespace TCMigrator.DBImpot
             user = User.Text;
             password = Password.Password;
             group = Group.Text;
-            var importLocation = Properties.CSVSettings.Default.CSVDirectory + main.getCurrentData().InputTitle + @"\" + Properties.CSVSettings.Default.DefaultCSVName;
+            var importLocation = Properties.CSVSettings.Default.CSVDirectory + main.getCurrentData().InputTitle + @"\";
             var OutputTCXMLLocation = Properties.CSVSettings.Default.CSVDirectory + main.getCurrentData().InputTitle + @"\";
             var conversionLogFileLocation = importLocation + ".log";
             ConvertThreadData ctd = new ConvertThreadData() { importLocation = importLocation, outTCXML = OutputTCXMLLocation, logLocation = conversionLogFileLocation };
@@ -73,7 +69,7 @@ namespace TCMigrator.DBImpot
             ConvertThreadData ctd = (ConvertThreadData)data;
             Converter csv = new Converter(callback);
             convert(ctd, csv);
-            csv.Import(ctd.outTCXML, user, password, group);     
+            csv.ImportAll(ctd.importLocation,ctd.outTCXML, user, password, group);     
         }
         private void callback(UIMessage m)
         {
@@ -116,8 +112,8 @@ namespace TCMigrator.DBImpot
             {
                 Params.Add(String.Format(Properties.ConvertConfig.group_items, convertOptions.groupDataItemsType));
             }
-            var xmlPath = "";
-            csv.ConvertWithParameters(ctd.importLocation, Params,out xmlPath);
+            //var xmlPath = "";
+            csv.ConvertAllWithParams(ctd.importLocation, Params);
         }
         private void AppendError(object o)
         {
