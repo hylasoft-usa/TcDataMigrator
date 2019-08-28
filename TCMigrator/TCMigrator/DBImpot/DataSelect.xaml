@@ -23,7 +23,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <GroupBox Header="Select a Table" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" Margin="5">
-                <ComboBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" x:Name="Tables" SelectionChanged="GetColumns"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" x:Name="Tables" SelectionChanged="GetColumns" DropDownOpened="checkTablesLoaded"/>
             </GroupBox>
             <GroupBox Header="Import Options" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" Margin="5" Grid.Column="1">
                 <Grid>
@@ -66,5 +66,8 @@
             </Grid.ColumnDefinitions>
             <Button Content="Proceed" Margin="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" x:Name="advance" Style="{StaticResource EngGreenBtn}" Click="FormatImportData"/>
         </Grid>
+        <GroupBox Header="" HorizontalAlignment="Stretch" Margin="0" Grid.RowSpan="4" VerticalAlignment="Stretch" Opacity="0.5" Background="LightGray" Visibility="Hidden" x:Name="Loading">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Loading..." FontSize="72"/>
+        </GroupBox>
     </Grid>
 </Page>

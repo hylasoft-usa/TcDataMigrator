@@ -18,16 +18,18 @@ namespace TCMigrator.DBImpot
         {
             InitializeComponent();
             this.main = main;
-            InitTables();
         }
+
         private void InitTables()
         {
+            Loading.Visibility = Visibility.Visible;
             IDbConnection con = DBProvider.GetDBConnection();
             List<String> tableNames = con.getTables();
-            foreach(String s in tableNames)
+            foreach (String s in tableNames)
             {
                 Tables.Items.Add(s);
             }
+            Loading.Visibility = Visibility.Hidden;
         }
 
         private void LockColumnSelection(object sender, RoutedEventArgs e)
@@ -60,6 +62,13 @@ namespace TCMigrator.DBImpot
                 }
             }
 
+        }
+        public void checkTablesLoaded(object sender, EventArgs e)
+        {
+            if (Tables.Items.Count<1)
+            {
+                InitTables();
+            }
         }
 
         private void AddColumnToSelected(object sender, RoutedEventArgs e)
@@ -131,5 +140,6 @@ namespace TCMigrator.DBImpot
             IDbConnection con = DBProvider.GetDBConnection();
             return con.getEntries(tableName, cols);
         }
+
     }
 }
