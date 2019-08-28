@@ -51,7 +51,7 @@ namespace TCMigrator.DBImpot
         {
             AvailableCols.Items.Clear();
             SelectedCols.Items.Clear();
-            if (Tables.SelectedIndex > 0)
+            if (Tables.SelectedIndex > -1)
             {
                 var table = (string)Tables.SelectedItem;
                 IDbConnection db = DBProvider.GetDBConnection();
