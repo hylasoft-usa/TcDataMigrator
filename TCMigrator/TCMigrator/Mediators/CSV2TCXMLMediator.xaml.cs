@@ -35,10 +35,11 @@ namespace TCMigrator.Mediators
         {
             this.mw = mw;
             InitializeComponent();
+            o = new CSVConverterOptions();
             data = new ImportData(String.Format("ManualImport_{0}", DateTime.Now));
             step = 1;
             ContentWindow.Content = new Csv2Tcxml(this);
-            o = new CSVConverterOptions();
+            
         }
 
         public void advance()

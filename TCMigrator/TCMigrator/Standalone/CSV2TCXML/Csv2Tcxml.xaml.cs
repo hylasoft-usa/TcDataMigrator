@@ -55,7 +55,6 @@ namespace TCMigrator.Standalone.DB2CSV
             SkipExistingType.IsEnabled = SkipExists.IsChecked.Value;
             SkipExistingType.Text = options.skipExistingType;
             UseBVRPercise.IsChecked = options.useBvrPercise;
-            //CsvPath.Text = Properties.CSVSettings.Default.CSVDirectory + main.getCurrentData().InputTitle + @"\" + Properties.CSVSettings.Default.DefaultCSVName;
             var encodingTypes = Enum.GetValues(typeof(EncodingType));
             foreach (EncodingType et in Enum.GetValues(typeof(EncodingType)))
             {

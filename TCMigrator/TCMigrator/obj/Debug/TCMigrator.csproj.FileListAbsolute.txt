@@ -58,9 +58,8 @@ C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Home.g.cs
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.g.cs
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\Home.baml
 C:\Users\Administrator\source\repos\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.baml
-C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.exe.config
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.exe
-C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.pdb
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.exe.config
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\ConvertAndImport.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\DataSelect.g.cs
@@ -74,10 +73,13 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\Db2CsvMediator.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\DBMediator.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\CSVPagedSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\CSVSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\DBSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\ImportSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\LoggerSettings.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\SettingsDisplay.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\TabbedSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\TCSettings.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SplitWindow.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Standalone\CSV2TCXML\Complete.g.cs
@@ -101,10 +103,13 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\Db2CsvMediator.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\DBMediator.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SettingsSelect.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\CSVPagedSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\CSVSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\DBSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\ImportSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\LoggerSettings.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\SettingsDisplay.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\TabbedSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Settings\TCSettings.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\SplitWindow.baml
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Standalone\CSV2TCXML\Complete.baml
@@ -121,4 +126,5 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csproj.CopyComplete
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.exe
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.pdb
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.pdb
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csprojAssemblyReference.cache
