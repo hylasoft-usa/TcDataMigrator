@@ -60,11 +60,17 @@ namespace TCMigrator.Settings
                     if (sli.Name == sp.Name)
                     {
                         sp.DefaultValue = Convert.ChangeType(sli.Value, ba[sp.Name].GetType());
+ 
+                        ba[sp.Name]= Convert.ChangeType(sli.Value, ba[sp.Name].GetType());
                     }
                 }
             }
-            ba.Save();
+            ba.Save(); ;
             SaveSuccess();
+            if ((bool)ba["IsMSSQL"])
+            {
+                
+            }
         }
         private void SaveSuccess()
         {
