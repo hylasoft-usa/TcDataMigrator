@@ -38,11 +38,13 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="8*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -50,12 +52,20 @@
                 <Button Content=">>>" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Style="{StaticResource EngBlueBtn}" x:Name="SelectCol" Click="AddColumnToSelected"/>
                 <Button Content="&lt;&lt;&lt;" Grid.Row="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Style="{StaticResource EngRedBtn}" x:Name="DeselectCol" Click="RemoveSelectedColumn"/>
             </Grid>
-            <GroupBox Header="Avaliable Columns" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource EngGBStyle}">
+            <GroupBox Header="Avaliable Columns" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource EngGBStyle}" Margin="5">
                 <ListBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" x:Name="AvailableCols"/>
             </GroupBox>
-            <GroupBox Header="Selected Columns" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Style="{StaticResource EngGBStyle}">
-                <ListBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" x:Name="SelectedCols"/>
+            <GroupBox Header="Selected Columns" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Style="{StaticResource EngGBStyle}" Margin="5">
+                <ListBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" x:Name="SelectedCols" SelectionChanged="SelectedCols_SelectionChanged"/>
             </GroupBox>
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Content="^" x:Name="MoveItemUp" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="20" MinWidth="20" Click="MoveSelectedUp" Style="{StaticResource EngBlueBtn}"></Button>
+                <Button Content="v" x:Name="MoveItemDown" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="20" MinWidth="20" Grid.Row="1" Click="MoveSelectedDown" Style="{StaticResource EngBlueBtn}"></Button>
+            </Grid>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
