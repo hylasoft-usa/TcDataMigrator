@@ -77,6 +77,9 @@ namespace TCMigrator.Mediators
             if (step == 1 && data.AreHeadersSet) { step++; }
             switch (step)
             {
+                case 0:
+                    ContentWindow.Content = new DataSelect(this);
+                    break;
                 case 1:
                     ContentWindow.Content = new ManualHeaders(this);
                     break;
