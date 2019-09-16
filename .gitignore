@@ -3,3 +3,6 @@ TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/db.lock
 TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide-wal
 TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide-shm
 TCMigrator/TCMigrator/bin/Debug/TCMigrator.exe
+TCMigrator/.vs/TCMigrator/v16/.suo
+TCMigrator/TCMigrator/obj/Debug/TCMigrator.csproj.GenerateResource.cache
+TCMigrator/TCMigrator/obj/Debug/TCMigrator.csprojAssemblyReference.cache
