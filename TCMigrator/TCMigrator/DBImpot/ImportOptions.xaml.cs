@@ -96,6 +96,8 @@ namespace TCMigrator.DBImpot
             main.updateImportOptions(co);
             main.advance();
         }
-        private void GoBack(object sender, RoutedEventArgs e) { }
+        private void GoBack(object sender, RoutedEventArgs e) {
+            main.retreat();
+        }
     }
 }
