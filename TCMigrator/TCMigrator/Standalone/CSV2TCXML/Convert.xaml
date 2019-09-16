@@ -34,6 +34,7 @@
             <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Group" VerticalAlignment="Center" TextAlignment="Right"/>
             <TextBlock Grid.Row="2" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Password" VerticalAlignment="Center" TextAlignment="Right"/>
             <Button Content="Import" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="3" VerticalAlignment="Center" Click="Import" Style="{StaticResource EngGreenBtn}" x:Name="Btn" TabIndex="4" />
+            <Button Content="Back" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Center" Click="Back" Style="{StaticResource EngRedBtn}"  TabIndex="4" />
             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="User" TabIndex="1" TextChanged="onTextChanged"/>
             <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="Group" TabIndex="2" TextChanged="onTextChanged"/>
             <PasswordBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" x:Name="Password" TabIndex="3" PasswordChanged="onPasswordChanged"/>

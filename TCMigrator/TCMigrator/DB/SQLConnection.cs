@@ -19,7 +19,7 @@ namespace TCMigrator.DB
             using (SqlConnection con = _connect())
             {
                 SqlCommand command = new SqlCommand();
-                command.CommandText = "SELECT * From PrefixJunction";
+                command.CommandText = "SELECT * From EUSA_PrefixJunction";
                 command.Connection = con;
                 con.Open();
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -49,7 +49,7 @@ namespace TCMigrator.DB
             using (SqlConnection con = _connect())
             {
                 SqlCommand command = new SqlCommand();
-                command.CommandText = "SELECT * From PrefixJunction";
+                command.CommandText = "SELECT * From EUSA_PrefixJunction";
                 command.Connection = con;
                 con.Open();
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -154,7 +154,10 @@ namespace TCMigrator.DB
                 DataTable dt = con.GetSchema("Tables");
                 foreach (DataRow row in dt.Rows)
                 {
-                    tables.Add((string)row[2]);
+                    if (((string)row[2]).Contains("EUSA_"))
+                    {
+                        tables.Add((string)row[2]);
+                    }
                 }
                 return tables;
             }

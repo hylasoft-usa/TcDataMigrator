@@ -15,6 +15,7 @@ using TCMigrator.Data;
 using TCMigrator.DBImpot;
 using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
+using TCMigrator.Transform;
 
 namespace TCMigrator
 {
@@ -37,6 +38,10 @@ namespace TCMigrator
             to.ComparisonFilters = comparisons;
             ipm.setTransformOptions(to);
             this.Close();
+        }
+        public TransformOptions getTransformOptions()
+        {
+            return ipm.getTransformOptions();
         }
         public void close()
         {

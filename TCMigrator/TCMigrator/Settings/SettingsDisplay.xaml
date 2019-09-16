@@ -1,0 +1,49 @@
+﻿<Page x:Class="TCMigrator.Settings.SettingsDisplay"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TCMigrator.Settings"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsDisplay">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" VerticalAlignment="Stretch" x:Name="Disp" AutoGenerateColumns="False" AlternatingRowBackground="WhiteSmoke" Background="White" BorderThickness="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*"/>
+                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="1*" IsReadOnly="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="6" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="&lt;&lt;" Margin="5" Grid.Column="5" Style="{StaticResource EngBlueBtn}" VerticalAlignment="Top" x:Name="BackArrow" Click="goBack" HorizontalAlignment="Left"></Button>
+                <Label Content="#" x:Name="PageNo" Grid.Column="6" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                <Button Content=">>" Margin="5" Grid.Column="7" Style="{StaticResource EngBlueBtn}" VerticalAlignment="Top" x:Name="ForwardArrow" Click="goForward" HorizontalAlignment="Right"></Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="Save" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Click="SaveSettings" Grid.Column="2" Style="{StaticResource EngGreenBtn}" />
+            <Button Content="Reset" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center" Click="Reset" Style="{StaticResource EngRedBtn}" />
+        </Grid>
+        <Label Content="Settings" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" x:Name="SettingType" FontFamily="Segoe UI Semibold" FontSize="25"/>
+        <Grid Background="WhiteSmoke" Grid.RowSpan="4" Opacity="0.7" x:Name="Overlay" Visibility="Hidden"></Grid>
+        <Label Content="Success" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="36" FontWeight="Bold" Foreground="#FF158310" x:Name="Saved" Visibility="Hidden"></Label>
+    </Grid>
+</Page>

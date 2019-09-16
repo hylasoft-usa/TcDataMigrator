@@ -33,29 +33,28 @@ namespace TCMigrator.Standalone.DB2CSV
         }
         private void LoadDefaults()
         {
-            SourceSite.Text = IM.Default.SOURCE_SITE;
-            BomViewRevisionType.Text = IM.Default.BOMVEIW_REVISION_TYPE;
-            BomViewType.Text = IM.Default.BOMVIEW_TYPE;
-            CsvSep.Text = IM.Default.CSV_SEPARATOR.ToString();
-            FileEncoding.Text = IM.Default.ENCODING;
-            CsvEscape.Text = IM.Default.CSV_ESCAPE.ToString();
-            TCXMLSep.Text = IM.Default.GMS_TCXML_STRING_SEPERATOR.ToString();
-            GroupBy.IsChecked = IM.Default.DEFAULT_GROUP_ITEMS;
+            var options = main.getCurrentImportOptions();
+            SourceSite.Text = options.SourceSite;
+            BomViewRevisionType.Text = options.bvr_type;
+            BomViewType.Text = options.bv_type;
+            CsvSep.Text = options.csvSeperator.ToString();
+            FileEncoding.Text = options.Encoding;
+            CsvEscape.Text = options.escapeChar.ToString();
+            TCXMLSep.Text = options.gmsTcxmlStringSeperator.ToString();
+            GroupBy.IsChecked = options.groupDataItems;
             GroupByType.IsEnabled = GroupBy.IsChecked.Value;
-            GroupByType.Text = IM.Default.DEFAULT_GROUP_ITEMS_TYPE;
-            IslandSize.Text = IM.Default.DEFAULT_ISLAND_SIZE.ToString();
-            LocalTimeOffset.Text = IM.Default.LOCAL_TIMEZONE_OFFSET_HOURS.ToString();
-            UseLocal.IsChecked = IM.Default.DEFAULT_USE_LOCAL_TIME;
+            GroupByType.Text = options.groupDataItemsType;
+            IslandSize.Text = options.islandSize.ToString();
+            LocalTimeOffset.Text = options.localTimeOffsetHours.ToString();
+            UseLocal.IsChecked = options.useLocalTime;
             LocalTimeOffset.IsEnabled = UseLocal.IsChecked.Value;
-            ValidateLovs.IsChecked = IM.Default.LOV_VALIDATE;
-            CsvQuote.Text = IM.Default.CSV_QUOTATION.ToString(); ;
-            CsvEscape.Text = IM.Default.CSV_ESCAPE.ToString();
-            SaveGSID.IsChecked = IM.Default.SAVE_GSID_OUT;
-            SkipExists.IsChecked = IM.Default.SKIP_EXISTING;
+            ValidateLovs.IsChecked = options.lovValidate;
+            CsvQuote.Text = options.quotationMarkIdentifier.ToString();
+            SaveGSID.IsChecked = options.saveGsidOut;
+            SkipExists.IsChecked = options.skipExisting;
             SkipExistingType.IsEnabled = SkipExists.IsChecked.Value;
-            SkipExistingType.Text = IM.Default.DEFAULT_SKIP_EXISTING_TYPE;
-            UseBVRPercise.IsChecked = IM.Default.BVR_PERCISE;
-            //CsvPath.Text = Properties.CSVSettings.Default.CSVDirectory + main.getCurrentData().InputTitle + @"\" + Properties.CSVSettings.Default.DefaultCSVName;
+            SkipExistingType.Text = options.skipExistingType;
+            UseBVRPercise.IsChecked = options.useBvrPercise;
             var encodingTypes = Enum.GetValues(typeof(EncodingType));
             foreach (EncodingType et in Enum.GetValues(typeof(EncodingType)))
             {
@@ -67,6 +66,30 @@ namespace TCMigrator.Standalone.DB2CSV
             }
             checkSubmittable();
 
+        }
+        private void EnableExisting(object sender, RoutedEventArgs e)
+        {
+            SkipExistingType.IsEnabled = true;
+        }
+        private void DisableExisting(object sender, RoutedEventArgs e)
+        {
+            SkipExistingType.IsEnabled = false;
+        }
+        private void EnableGroupBy(object sender, RoutedEventArgs e)
+        {
+            GroupByType.IsEnabled = true;
+        }
+        private void DisableGroupBy(object sender, RoutedEventArgs e)
+        {
+            GroupByType.IsEnabled = false;
+        }
+        private void EnableLocalTime(object sender, RoutedEventArgs e)
+        {
+            LocalTimeOffset.IsEnabled = true;
+        }
+        private void DisableLocalTime(object sender, RoutedEventArgs e)
+        {
+            LocalTimeOffset.IsEnabled = false;
         }
 
         private void SaveImportOptions(object sender, RoutedEventArgs e)

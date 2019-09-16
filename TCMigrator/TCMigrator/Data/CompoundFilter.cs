@@ -11,6 +11,7 @@ namespace TCMigrator.Data
     {
         List<ColumnFilter> filters;
         CompoundFilterType filterType;
+        public List<ColumnFilter> Filters { get { return filters; } }
         public CompoundFilterType JoinType { get { return this.filterType; } }
         public int FilterCount { get { return filters.Count; } }
 
