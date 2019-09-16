@@ -127,6 +127,16 @@ namespace TCMigrator.Standalone.TCXMXLImport
                 Viewer.ScrollToBottom();
             }
         }
+        private void OpenFileDialog(object sender, RoutedEventArgs e)
+        {
+            var dia = new Microsoft.Win32.OpenFileDialog();
+            dia.Filter = "XML Files(*.xml)|*.xml";
+            var result = dia.ShowDialog();
+            if(result.HasValue && result.Value)
+            {
+                XmlLocation.Text = dia.FileName;
+            }
+        }
 
         private void onTextChanged(object sender, TextChangedEventArgs e)
         {

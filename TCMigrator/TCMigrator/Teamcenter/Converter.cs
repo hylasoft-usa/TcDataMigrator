@@ -117,7 +117,7 @@ namespace TCMigrator.Teamcenter
             cmd.SendCommand(String.Format(Properties.CommandLineText.CHANGE_DIRECTORY, directory));
             cmd.SendCommand("SET TIE_DEBUG=4");
             cmd.SendCommand("SET LOG_BATCH_SIZE=1");
-            var command = String.Format(@"tcxml_import -file={0} -u={1} -p={2} -g={3} -bulk_load -bypass_inferdelete", path,user, password, group);
+            var command = String.Format("tcxml_import -file=\"{0}\" -u={1} -p={2} -g={3} -bulk_load -bypass_inferdelete", path,user, password, group);
             cmd.SendCommand(command);
             var success = awaitImportCompletion();
             if (shouldArchive)

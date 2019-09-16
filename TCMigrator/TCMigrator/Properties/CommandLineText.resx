@@ -124,7 +124,7 @@
     <value>cd {0}</value>
   </data>
   <data name="CONVERT_CSV2TCXML" xml:space="preserve">
-    <value>tcperl csv2tcxml.perl {0}</value>
+    <value>tcperl csv2tcxml.perl "{0}"</value>
   </data>
   <data name="CONVERT_CSV2TCXML_PARAM_SPECIFICATION" xml:space="preserve">
     <value>-p {0}={1}</value>
