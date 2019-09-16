@@ -6,3 +6,4 @@ TCMigrator/TCMigrator/bin/Debug/TCMigrator.exe
 TCMigrator/.vs/TCMigrator/v16/.suo
 TCMigrator/TCMigrator/obj/Debug/TCMigrator.csproj.GenerateResource.cache
 TCMigrator/TCMigrator/obj/Debug/TCMigrator.csprojAssemblyReference.cache
+*.cache
