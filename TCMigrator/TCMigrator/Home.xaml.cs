@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCMigrator.Mediators;
-using TCMigrator.Settings;
 using TCMigrator.Standalone.TCXMXLImport;
 
 namespace TCMigrator
@@ -52,7 +51,7 @@ namespace TCMigrator
 
         private void ConfigSettings(object sender, RoutedEventArgs e)
         {
-            mw.Navigate(new TabbedSettings());
+            mw.Navigate(new SettingsSelect(mw));
         }
     }
 }

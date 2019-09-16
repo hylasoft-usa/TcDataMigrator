@@ -19,7 +19,6 @@ namespace TCMigrator.DBImpot
             InitializeComponent();
             this.main = main;
             checkCanGoForward();
-            checkReorgButtons();
         }
 
         private void InitTables()
@@ -73,60 +72,6 @@ namespace TCMigrator.DBImpot
             if (Tables.Items.Count<1)
             {
                 InitTables();
-            }
-        }
-        private void MoveSelectedUp(object sender, RoutedEventArgs e)
-        {
-            if (SelectedCols.SelectedItem != null)
-            {
-                var index = SelectedCols.SelectedIndex;
-                if (index > 0)
-                {
-                    var i1 = SelectedCols.Items[index];
-                    var it2 = SelectedCols.Items[index - 1];
-                    SelectedCols.Items[index] = it2;
-                    SelectedCols.Items[index - 1] = i1;
-                    SelectedCols.SelectedIndex = index - 1;
-                }
-            }
-            checkReorgButtons();
-        }
-        private void MoveSelectedDown(object sender, RoutedEventArgs e)
-        {
-            if (SelectedCols.SelectedItem != null)
-            {
-                if (SelectedCols.SelectedIndex < SelectedCols.Items.Count - 1)
-                {
-                    var index = SelectedCols.SelectedIndex;
-                    var i1 = SelectedCols.Items[index];
-                    var i2 = SelectedCols.Items[index + 1];
-                    SelectedCols.Items[index + 1] = i1;
-                    SelectedCols.Items[index] = i2;
-                    SelectedCols.SelectedIndex = index + 1;
-                }
-            }
-            checkReorgButtons();
-        }
-        private void checkReorgButtons()
-        {
-            if (SelectedCols.SelectedItem != null)
-            {
-                if (SelectedCols.SelectedIndex > 0)
-                {
-                    MoveItemUp.IsEnabled = true;
-                }
-                else
-                {
-                    MoveItemUp.IsEnabled = false;
-                }
-                if (SelectedCols.SelectedIndex < SelectedCols.Items.Count - 1)
-                {
-                    MoveItemDown.IsEnabled = true;
-                }
-                else
-                {
-                    MoveItemDown.IsEnabled = false;
-                }
             }
         }
 
@@ -212,9 +157,5 @@ namespace TCMigrator.DBImpot
             return con.getEntries(tableName, cols);
         }
 
-        private void SelectedCols_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            checkReorgButtons();
-        }
     }
 }

@@ -141,38 +141,23 @@ namespace TCMigrator.Teamcenter
         }
         public void archive(string path)
         {
-            var usePath = path;
             var achriveExtensions = new string[] { ".txt", ".csv", ".xml", ".log" };
             var now = DateTime.Now;
             var filename = String.Format("Import_{0}_{1}_{2} {3}-{4}-{5}\\", now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
-            if (usePath.EndsWith(@"\"))
-            {
-                usePath=usePath.Remove(usePath.Length - 1);
-            }
-            if(usePath.EndsWith(".csv") || usePath.EndsWith(".xml"))
-            {
-                var parts = path.Split('\\');
-                var alteredPath = "";
-                for(var x= 0;x < (parts.Length - 2); x++){
-                    alteredPath += parts[x] + @"\"; 
-                }
-                usePath = alteredPath;
-
-            }
             string dirname = "";
-            if (usePath.EndsWith(@"\"))
+            if (path.EndsWith(@"\"))
             {
-                dirname = usePath + filename;
+                dirname = path + filename;
             }
             else
             {
-                dirname = usePath + @"\" + filename;
+                dirname = path + @"\" + filename;
             }
             if (!Directory.Exists(dirname))
             {
                 Directory.CreateDirectory(dirname);
             }
-            DirectoryInfo d = new DirectoryInfo(usePath);
+            DirectoryInfo d = new DirectoryInfo(path);
             FileInfo[] f = d.GetFiles();
             DirectoryInfo[] dirs=d.GetDirectories("*FilteredEntries*");
             if (dirs.Length > 0)

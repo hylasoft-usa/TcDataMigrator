@@ -39,12 +39,7 @@ namespace TCMigrator.DBImpot
             
             for(var x= 0; x < cols.Count; x++)
             {
-                DisplayObject dobj = new DisplayObject(cols[x], entries[x], x);
-                if (main.getCurrentData().AreHeadersSet)
-                {
-                    dobj.Header = main.getCurrentData().Headers[x];
-                }
-                columns.Add(dobj);
+                columns.Add(new DisplayObject(cols[x], entries[x],x));
             }
         }
         private void addDisplayObjects()
@@ -70,7 +65,7 @@ namespace TCMigrator.DBImpot
         }
         private void GoBack(object sender, RoutedEventArgs e)
         {
-            main.retreat();
+
         }
     }
 

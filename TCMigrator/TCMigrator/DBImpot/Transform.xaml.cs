@@ -38,23 +38,7 @@ namespace TCMigrator.DBImpot
             replacementDict = new Dictionary<string, string>();
             removalList = new List<String>();
             this.main = main;
-            this.prefill();
-        }
-        private void prefill()
-        {
-            TransformOptions t = main.getTransformOptions();
-            Trim.IsChecked = t.Trim;
-            if (t.ReplacementDictionary.Count > 0)
-            {
-                replacementDict = t.ReplacementDictionary;
-                var x = 1;
-                foreach(KeyValuePair<String,String> kvp in t.ReplacementDictionary)
-                {
-                    TransformList.Items.Add(new TransformDescriptor() { id = x, type = Enums.TransformType.REPLACE, value = kvp.Key, replacement = kvp.Value });
-                    x++;
-                }
-            }
-            rowsPerCsv.Text = t.RowsPerFile <0? main.getCurrentData().Entries.Count().ToString() : t.RowsPerFile.ToString();
+            rowsPerCsv.Text = main.getCurrentData().Entries.Count().ToString();
         }
         private void AddReplacementItem(object sender, RoutedEventArgs e)
         {
@@ -78,16 +62,13 @@ namespace TCMigrator.DBImpot
                 to.Trim = true;
             }
             if (Int32.Parse(rowsPerCsv.Text) != main.getCurrentData().Entries.Count) { to.RowsPerFile = Int32.Parse(rowsPerCsv.Text); to.AreEntriesSplit = true; }
-            main.setTransformOptions(to);
             main.updateData(transformer.transform(main.getCurrentData(), to));
             if (writeCSV(main.getCurrentData()))
             {
                 main.advance();
             }
         }
-        private void GoBack(object sender, RoutedEventArgs e) {
-            main.retreat();
-        }
+        private void GoBack(object sender, RoutedEventArgs e) { }
         private Dictionary<String, String> createReplacementDict()
         {
             Dictionary<String, String> replacement = new Dictionary<string, string>();
