@@ -159,6 +159,15 @@ namespace TCMigrator.Teamcenter
             }
             DirectoryInfo d = new DirectoryInfo(path);
             FileInfo[] f = d.GetFiles();
+            DirectoryInfo[] dirs=d.GetDirectories("*FilteredEntries*");
+            if (dirs.Length > 0)
+            {
+                foreach(DirectoryInfo di in dirs)
+                {
+                    Directory.Move(di.FullName, dirname + di.Name);
+                }
+            }
+            
             foreach(FileInfo fi in f)
             {
                 File.Move(fi.FullName, dirname + fi.Name);
