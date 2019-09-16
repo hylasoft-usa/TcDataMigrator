@@ -51,6 +51,7 @@ namespace TCMigrator.DBImpot
 
         private void Import(object sender, RoutedEventArgs e)
         {
+            importBtn.IsEnabled = false;
             user = User.Text;
             password = Password.Password;
             group = Group.Text;
@@ -75,7 +76,12 @@ namespace TCMigrator.DBImpot
             ConvertThreadData ctd = (ConvertThreadData)data;
             Converter csv = new Converter(callback);
             convert(ctd, csv);
-            csv.ImportAll(ctd.importLocation,ctd.outTCXML, user, password, group);     
+            csv.ImportAll(ctd.importLocation,ctd.outTCXML, user, password, group);
+            _context.Post(ImportComplete, true);
+        }
+        public void ImportComplete(object o)
+        {
+            importBtn.IsEnabled = true;
         }
         private void callback(UIMessage m)
         {
