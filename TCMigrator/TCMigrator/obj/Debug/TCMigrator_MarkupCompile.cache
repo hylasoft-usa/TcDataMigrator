@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\App.xaml
-231639173252
+26-1121237332
 
-71-1590826143
-15212665910
-DBImpot\ConvertAndImport.xaml;DBImpot\DataSelect.xaml;DBImpot\ImportOptions.xaml;DBImpot\ManualHeaders.xaml;DBImpot\SplitCsv.xaml;DBImpot\Transform.xaml;Home.xaml;MainWindow.xaml;Mediators\CSV2TCXMLMediator.xaml;Mediators\Db2CsvMediator.xaml;Mediators\DBMediator.xaml;SettingsSelect.xaml;Settings\CSVSettings.xaml;Settings\DBSettings.xaml;Settings\ImportSettings.xaml;Settings\LoggerSettings.xaml;Settings\TCSettings.xaml;SplitWindow.xaml;Standalone\CSV2TCXML\Complete.xaml;Standalone\CSV2TCXML\Convert.xaml;Standalone\DB2CSV\DB2CSV.xaml;Standalone\CSV2TCXML\Csv2Tcxml.xaml;Standalone\TCXMXLImport\ManualTCXMLImport.xaml;
+76545914204
+16-1510746933
+DBImpot\ConvertAndImport.xaml;DBImpot\DataSelect.xaml;DBImpot\ImportOptions.xaml;DBImpot\ManualHeaders.xaml;DBImpot\SplitCsv.xaml;DBImpot\Transform.xaml;Home.xaml;MainWindow.xaml;Mediators\CSV2TCXMLMediator.xaml;Mediators\Db2CsvMediator.xaml;Mediators\DBMediator.xaml;SettingsSelect.xaml;Settings\CSVPagedSettings.xaml;Settings\CSVSettings.xaml;Settings\DBSettings.xaml;Settings\ImportSettings.xaml;Settings\LoggerSettings.xaml;Settings\SettingsDisplay.xaml;Settings\TabbedSettings.xaml;Settings\TCSettings.xaml;SplitWindow.xaml;Standalone\CSV2TCXML\Complete.xaml;Standalone\CSV2TCXML\Convert.xaml;Standalone\DB2CSV\DB2CSV.xaml;Standalone\CSV2TCXML\Csv2Tcxml.xaml;Standalone\TCXMXLImport\ManualTCXMLImport.xaml;
 
 False
 

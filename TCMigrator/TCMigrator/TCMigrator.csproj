@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="PresentationFramework.AeroLite" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,6 +145,9 @@
     <Compile Include="SettingsSelect.xaml.cs">
       <DependentUpon>SettingsSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings\CSVPagedSettings.xaml.cs">
+      <DependentUpon>CSVPagedSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\CSVSettings.xaml.cs">
       <DependentUpon>CSVSettings.xaml</DependentUpon>
     </Compile>
@@ -156,7 +160,14 @@
     <Compile Include="Settings\LoggerSettings.xaml.cs">
       <DependentUpon>LoggerSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings\SettingsDisplay.xaml.cs">
+      <DependentUpon>SettingsDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\SettingsGenerator.cs" />
+    <Compile Include="Settings\SettingsListItem.cs" />
+    <Compile Include="Settings\TabbedSettings.xaml.cs">
+      <DependentUpon>TabbedSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\TCSettings.xaml.cs">
       <DependentUpon>TCSettings.xaml</DependentUpon>
     </Compile>
@@ -186,6 +197,7 @@
     <Compile Include="Transform\TransformOptions.cs" />
     <Compile Include="VisualUtilities\ButtonGenerator.cs" />
     <Compile Include="VisualUtilities\GridGenerator.cs" />
+    <Compile Include="VisualUtilities\PageableGrid.cs" />
     <Compile Include="VisualUtilities\TextBlockGenerator.cs" />
     <Compile Include="VisualUtilities\TextBoxGenerator.cs" />
     <Compile Include="VisualUtilities\UIMessage.cs" />
@@ -250,6 +262,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Settings\CSVPagedSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Settings\CSVSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -263,6 +279,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Settings\LoggerSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SettingsDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\TabbedSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
