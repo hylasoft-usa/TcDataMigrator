@@ -45,7 +45,6 @@ namespace TCMigrator.DBImpot
         {
             User.Text = Properties.TeamcenterSettings.Default.TC_USER;
             Group.Text = Properties.TeamcenterSettings.Default.TC_GROUP;
-            Password.Password = Properties.TeamcenterSettings.Default.TC_Password;
             checkIsSubmittable();
         }
 
@@ -60,10 +59,6 @@ namespace TCMigrator.DBImpot
             var conversionLogFileLocation = importLocation + ".log";
             ConvertThreadData ctd = new ConvertThreadData() { importLocation = importLocation, outTCXML = OutputTCXMLLocation, logLocation = conversionLogFileLocation };
             startThreads(ctd);
-        }
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            main.retreat();
         }
         public void startThreads(ConvertThreadData ctd)
         {

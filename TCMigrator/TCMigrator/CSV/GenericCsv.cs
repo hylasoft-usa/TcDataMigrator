@@ -11,6 +11,7 @@ namespace TCMigrator.CSV
 {
     public class GenericCsv : ICsv
     {
+        private readonly string FilterFolder = @"FilteredEntries\";
         private char separator;
         public GenericCsv()
         {
@@ -30,9 +31,9 @@ namespace TCMigrator.CSV
         {
             var dir = Properties.CSVSettings.Default.CSVDirectory + data.InputTitle + @"\";
             var pathToReturn="";
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(dir+FilterFolder))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(dir+FilterFolder);
             }
             if(data.FilteredEntries!=null && data.FilteredEntries.Count > 0)
             {
@@ -42,7 +43,7 @@ namespace TCMigrator.CSV
                     if (filtered.Count > 0)
                     {
                         var csvContent = buildCsv(data.Headers, filtered);
-                        var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName + "_FILTERED_ENTRIES_" + x + ".csv";
+                        var fullName = dir +FilterFolder+ Properties.CSVSettings.Default.DefaultCSVName + "_FILTERED_ENTRIES_" + x + ".csv";
                         File.WriteAllText(fullName, csvContent);
                         pathToReturn = dir;
                         x++;
@@ -58,6 +59,11 @@ namespace TCMigrator.CSV
             }
             else
             {
+                var filteredDir = dir + FilterFolder;
+                if (!Directory.Exists(filteredDir))
+                {
+                    Directory.CreateDirectory(filteredDir);
+                }
                 var splitEntries = data.SplitEntries;
                 for(var x=0; x < splitEntries.Count; x++)
                 {

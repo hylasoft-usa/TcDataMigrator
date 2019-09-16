@@ -83,13 +83,5 @@ namespace TCMigrator
         {
             NavigateHome();
         }
-        public void ShowTest(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new SettingsDisplay(Properties.ImportSettings.Default, "Import Settigns");
-        }
-        public void ShowSettings(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new TabbedSettings();
-        }
     }
 }

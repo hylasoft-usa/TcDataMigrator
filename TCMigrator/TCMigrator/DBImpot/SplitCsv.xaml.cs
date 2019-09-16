@@ -38,40 +38,6 @@ namespace TCMigrator.DBImpot
             initSelectLists();
             checkIfGroupCanBeClosed();
             isSingleFilterSubmittable();
-            checkIfDataExists();
-        }
-        public void checkIfDataExists()
-        {
-            var o=w.getTransformOptions();
-            if (o.ComparisonFilters.Count > 0)
-            {
-                foreach (ComparisonFilter f in o.ComparisonFilters)
-                {
-                    comparisons.Add(new ComparisonFilter(f.IndexA, f.IndexB, f.ColumnAName, f.ColBName, f.CompareType));
-                    SingleFilterDisplay.Items.Add(new SingleFilterDisplay(f.ColumnAName, f.CompareType.ToString(), f.ColBName));
-                }
-            }
-            if (o.CompoundFilters.Count > 0)
-            {
-                var x = 1;
-                foreach(CompoundFilter c in o.CompoundFilters)
-                {
-                    foreach(ColumnFilter cf in c.Filters)
-                    {
-                        compoundFilters.Items.Add(new CompoundFilterDisplay(x.ToString(), cf.Name, cf.FilterValue, cf.Type.ToString(), c.JoinType.ToString()));
-                    }
-                    compounds.Add(c);
-                    x++;
-                }
-            }
-            if (o.ColumnFilters.Count > 0)
-            {
-                foreach(ColumnFilter cf in o.ColumnFilters)
-                {
-                    singles.Add(new ColumnFilter(cf.Index, cf.Name, cf.Type, cf.FilterValue));
-                    SingleFilterDisplay.Items.Add(new SingleFilterDisplay(cf.Name, cf.Type.ToString(), cf.FilterValue));
-                }
-            }
         }
         private void initSelectLists()
         {
