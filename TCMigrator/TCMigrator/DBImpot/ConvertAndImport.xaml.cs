@@ -45,6 +45,7 @@ namespace TCMigrator.DBImpot
         {
             User.Text = Properties.TeamcenterSettings.Default.TC_USER;
             Group.Text = Properties.TeamcenterSettings.Default.TC_GROUP;
+            Password.Password = Properties.TeamcenterSettings.Default.TC_Password;
             checkIsSubmittable();
         }
 

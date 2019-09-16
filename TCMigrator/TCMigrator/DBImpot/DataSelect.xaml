@@ -32,7 +32,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <CheckBox Content="Select All Columns"  HorizontalAlignment="Left" Style="{StaticResource RoundedTextbox}" Margin="5,0,0,0" VerticalAlignment="Center" x:Name="SelectAllCols" Checked="LockColumnSelection" Unchecked="unlockColumnSelection"/>
-                    <CheckBox Content="Autogenerate Headers" Style="{StaticResource RoundedTextbox}" Grid.Row="1" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" x:Name="AutoHeaders"/>
+                    <CheckBox Content="Autogenerate Headers" Style="{StaticResource RoundedTextbox}" Grid.Row="1" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" x:Name="AutoHeaders" IsChecked="True"/>
                 </Grid>
             </GroupBox>
         </Grid>

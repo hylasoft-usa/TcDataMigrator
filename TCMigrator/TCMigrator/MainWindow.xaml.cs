@@ -56,7 +56,7 @@ namespace TCMigrator
         }
         public void NavigateHome()
         {
-            Main.Content = new DBMediator(this);
+            Main.Content = new Home(this);
         }
         public void Db2Csv(object sender, RoutedEventArgs e)
         {
