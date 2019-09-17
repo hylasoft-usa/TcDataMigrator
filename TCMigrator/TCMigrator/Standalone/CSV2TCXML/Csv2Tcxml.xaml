@@ -62,9 +62,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <CheckBox Content="Skip Existing?" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="SkipExists" Style="{DynamicResource RoundedTextbox}" Checked="EnableExisting" Unchecked="DisableExisting"/>
-                <CheckBox Content="Group By Type?" Grid.Column="1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource RoundedTextbox}" VerticalAlignment="Center" x:Name="GroupBy" Checked="EnableGroupBy" Unchecked="DisableGroupBy"/>
-                <CheckBox Content="Use Local Time?" Grid.Row="2" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="UseLocal" Style="{StaticResource RoundedTextbox}" Checked="EnableLocalTime" Unchecked="DisableLocalTime"/>
+                <CheckBox Content="Skip Existing?" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="SkipExists" Style="{DynamicResource RoundedTextbox}"/>
+                <CheckBox Content="Group By Type?" Grid.Column="1" HorizontalAlignment="Left" Margin="5" Style="{StaticResource RoundedTextbox}" VerticalAlignment="Center" x:Name="GroupBy"/>
+                <CheckBox Content="Use Local Time?" Grid.Row="2" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" x:Name="UseLocal" Style="{StaticResource RoundedTextbox}"/>
                 <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="SkipExistingType"/>
                 <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="GroupByType"/>
                 <TextBox Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="LocalTimeOffset"/>

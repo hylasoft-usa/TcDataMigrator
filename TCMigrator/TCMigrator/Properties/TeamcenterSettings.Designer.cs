@@ -61,7 +61,7 @@ namespace TCMigrator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("infodba")]
+        [global::System.Configuration.DefaultSettingValueAttribute("geoff")]
         public string TC_USER {
             get {
                 return ((string)(this["TC_USER"]));
@@ -74,18 +74,6 @@ namespace TCMigrator.Properties {
         public string TC_GROUP {
             get {
                 return ((string)(this["TC_GROUP"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("infodba")]
-        public string TC_Password {
-            get {
-                return ((string)(this["TC_Password"]));
-            }
-            set {
-                this["TC_Password"] = value;
             }
         }
     }

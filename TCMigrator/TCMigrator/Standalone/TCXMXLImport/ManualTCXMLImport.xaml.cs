@@ -36,13 +36,6 @@ namespace TCMigrator.Standalone.TCXMXLImport
             this.mw = mw;
             InitializeComponent();
             checkIsSubmittable();
-            loadDefaults();
-        }
-        public void loadDefaults()
-        {
-            this.TcGroup.Text = Properties.TeamcenterSettings.Default.TC_GROUP;
-            this.TcPass.Password = Properties.TeamcenterSettings.Default.TC_Password;
-            this.TcUser.Text = Properties.TeamcenterSettings.Default.TC_USER;
         }
 
         private void DoImport(object sender, RoutedEventArgs e)

@@ -28,13 +28,12 @@
                     <MenuItem Header="_CSV2TCXML" Click="TCXML" Foreground="Black"></MenuItem>
                     <MenuItem Header="_TCXML Import" Click="Import" Foreground="Black"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Settings" Click="ShowSettings">
-                    <!--<MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>
+                <MenuItem Header="Settings">
+                    <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>
                     <MenuItem Header="_Database Settings" Click="ShowDBSettings" Foreground="Black"></MenuItem>
                     <MenuItem Header="_TeamCenter Settings" Click="ShowTCSettings" Foreground="Black"></MenuItem>
                     <MenuItem Header="_CSV Import Settings" Click="ShowCSVSettings" Foreground="Black"></MenuItem>
                     <MenuItem Header="_TCXML Import Settings" Click="ShowImportSettings" Foreground="Black"></MenuItem>
-                    <MenuItem Header="_Test" Click="ShowTest" Foreground="Black"></MenuItem>-->
                 </MenuItem>
                 <MenuItem Header="Logs">
                     <MenuItem Header="Execution Log" Foreground="Black"></MenuItem>

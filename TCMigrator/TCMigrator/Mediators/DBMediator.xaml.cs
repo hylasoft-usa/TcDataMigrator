@@ -39,16 +39,11 @@ namespace TCMigrator.Mediators
             step = 0;
             ContentWindow.Content = new DataSelect(this);
             this.mw = mw;
-            options = new CSVConverterOptions();
         }
-        public void Home()
-        {
-            mw.NavigateHome();
-        }
+
         public void advance()
         {
             step++;
-            if (step == 1 && data.AreHeadersSet) { step++; }
             LazyLoadClass();
         }
 
@@ -65,7 +60,7 @@ namespace TCMigrator.Mediators
         public void retreat()
         {
             step--;
-            LazyLoadClass();
+            ContentWindow.Content = pages[step];
         }
 
         public void updateData(ImportData data)
@@ -79,11 +74,9 @@ namespace TCMigrator.Mediators
         }
         private void LazyLoadClass()
         {
+            if(step==1 && data.AreHeadersSet) { step++; }
             switch (step)
             {
-                case 0:
-                    ContentWindow.Content = new DataSelect(this);
-                    break;
                 case 1:
                     ContentWindow.Content = new ManualHeaders(this);
                     break;

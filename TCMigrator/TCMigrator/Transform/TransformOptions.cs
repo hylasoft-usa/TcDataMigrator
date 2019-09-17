@@ -32,8 +32,6 @@ namespace TCMigrator.Transform
         {
             replacement = new Dictionary<string, string>();
             filters = new List<ColumnFilter>();
-            compoundFilters = new List<CompoundFilter>();
-            comparisonFilters = new List<ComparisonFilter>();
             remove = new List<String>();
             trim = true;
             rowsPerFile = -1;
