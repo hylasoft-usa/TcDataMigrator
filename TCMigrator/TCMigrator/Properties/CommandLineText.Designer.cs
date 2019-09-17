@@ -79,7 +79,7 @@ namespace TCMigrator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to tcperl csv2tcxml.perl {0}.
+        ///   Looks up a localized string similar to tcperl csv2tcxml.perl &quot;{0}&quot;.
         /// </summary>
         public static string CONVERT_CSV2TCXML {
             get {

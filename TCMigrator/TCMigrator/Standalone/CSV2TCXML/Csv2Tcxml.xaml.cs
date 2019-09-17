@@ -101,7 +101,17 @@ namespace TCMigrator.Standalone.DB2CSV
             main.advance();
         }
         private void GoBack(object sender, RoutedEventArgs e) { }
-
+        private void OpenFileBrowser(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.InitialDirectory = Properties.CSVSettings.Default.CSVDirectory;
+            dlg.Filter = "CSV Files (*.csv)|*.csv";
+            var result = dlg.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                CsvPath.Text = dlg.FileName;
+            }
+        }
         private void textChanged(object sender, TextChangedEventArgs e)
         {
             checkSubmittable();
