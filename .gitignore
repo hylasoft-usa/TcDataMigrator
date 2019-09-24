@@ -190,3 +190,7 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide-wal
+TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide-shm
+TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide
+TCMigrator/.vs/TCMigrator/v16/Server/sqlite3/storage.ide
