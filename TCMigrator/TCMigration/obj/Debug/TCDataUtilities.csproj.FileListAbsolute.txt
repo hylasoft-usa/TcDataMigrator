@@ -1,0 +1,12 @@
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCDataUtilities.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCMigration.MSSQLStatements.resources
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCMigration.OracleStatements.resources
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCDataUtilities.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCDataUtilities.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\bin\Debug\TCMigration.dll.config
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\bin\Debug\TCMigration.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\bin\Debug\TCMigration.pdb
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCDataUtilities.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCMigration.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigration\obj\Debug\TCMigration.pdb

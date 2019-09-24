@@ -141,6 +141,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>TeamcenterSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RelationsImport\DataSelect.xaml.cs">
+      <DependentUpon>DataSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsSelect.xaml.cs">
       <DependentUpon>SettingsSelect.xaml</DependentUpon>
     </Compile>
@@ -243,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Mediators\DBMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelationsImport\DataSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -353,7 +360,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TCMigration\TCDataUtilities.csproj">
+      <Project>{7c8fca26-9a3e-4bff-a12d-7bcdbb431c08}</Project>
+      <Name>TCDataUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

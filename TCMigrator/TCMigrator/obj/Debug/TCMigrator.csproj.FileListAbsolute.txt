@@ -62,6 +62,7 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.exe
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigrator.pdb
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\ConvertAndImport.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\DataSelect.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DBImpot\ImportOptions.g.cs
@@ -121,4 +122,8 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csproj.CopyComplete
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.exe
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.pdb
-C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\TCMigrator.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigration.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigration.pdb
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigration.dll.config
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\RelationsImport\DataSelect.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\RelationsImport\DataSelect.baml

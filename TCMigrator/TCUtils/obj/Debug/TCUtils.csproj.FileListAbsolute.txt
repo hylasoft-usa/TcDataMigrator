@@ -1,0 +1,5 @@
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCUtils\bin\Debug\TCUtils.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCUtils\bin\Debug\TCUtils.pdb
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCUtils\obj\Debug\TCUtils.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCUtils\obj\Debug\TCUtils.dll
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCUtils\obj\Debug\TCUtils.pdb
