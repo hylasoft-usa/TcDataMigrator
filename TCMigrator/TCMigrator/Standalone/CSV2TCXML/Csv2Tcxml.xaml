@@ -69,7 +69,16 @@
                 <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="GroupByType"/>
                 <TextBox Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="LocalTimeOffset"/>
             </Grid>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" TextChanged="textChanged"/>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvPath" TextChanged="textChanged"/>
+                <Button Grid.Column="1" Margin="10" Click="OpenFileBrowser">
+                    <Image Source="/Assets/magnify.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ></Image>
+                </Button>
+            </Grid>
             <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvSep"/>
             <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvQuote"/>
             <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Height="22" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="CsvEscape"/>

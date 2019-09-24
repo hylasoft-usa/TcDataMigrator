@@ -26,7 +26,16 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TCXML Location:" VerticalAlignment="Center" TextAlignment="Right"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="XmlLocation" TabIndex="1" TextChanged="onTextChanged"/>         
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="XmlLocation" TabIndex="1" TextChanged="onTextChanged"/>
+                <Button Click="OpenFileDialog" Grid.Column="1" Height="23">
+                    <Image Source="/Assets/magnify.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                </Button>
+            </Grid>       
             <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Margin="5" TextWrapping="Wrap" Text="TC Username:" VerticalAlignment="Center" TextAlignment="Right"/>
             <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" x:Name="TcUser" TabIndex="2" TextChanged="onTextChanged"/>           
             <TextBlock HorizontalAlignment="Stretch" Grid.Row="2" Margin="5" TextWrapping="Wrap" Text="TCXML Password:" VerticalAlignment="Center" TextAlignment="Right"/>

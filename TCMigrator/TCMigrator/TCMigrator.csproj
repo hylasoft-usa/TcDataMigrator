@@ -365,6 +365,9 @@
       <Project>{7c8fca26-9a3e-4bff-a12d-7bcdbb431c08}</Project>
       <Name>TCDataUtilities</Name>
     </ProjectReference>
+    <Resource Include="Assets\magnify.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo1.png">
