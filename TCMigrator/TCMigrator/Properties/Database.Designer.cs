@@ -170,7 +170,7 @@ namespace TCMigrator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EUSA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EUSA_")]
         public string TablePrefix {
             get {
                 return ((string)(this["TablePrefix"]));
