@@ -12,7 +12,7 @@ namespace TCDataUtilities.Database.Oracle
     {
         private Dictionary<String, String> mapping;
         private List<OracleColumnMap> columnMap;
-        private readonly string OracleConnectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST = {0})(PORT = {1})))(CONNECT_DATA =(SERVICE_NAME = {2})));User ID = { 3 }; Password={4};";
+        private readonly string OracleConnectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST ={0})(PORT ={1})))(CONNECT_DATA =(SERVICE_NAME ={2})));User ID ={3}; Password={4}";
         private string OracleUser;
         private string OracleIP;
         private string OracleService;
@@ -233,6 +233,7 @@ namespace TCDataUtilities.Database.Oracle
         {
             var con = new ODC.OracleConnection();
             con.ConnectionString = String.Format(OracleConnectionString,OracleIP, OraclePort, OracleService, OracleUser, OraclePassword);
+           
             return con;
         }
     }
