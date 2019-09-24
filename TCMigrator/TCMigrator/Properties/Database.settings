@@ -51,7 +51,7 @@
       <Value Profile="(Default)">Hyla1234$%</Value>
     </Setting>
     <Setting Name="TablePrefix" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">EUSA</Value>
+      <Value Profile="(Default)">EUSA_</Value>
     </Setting>
   </Settings>
 </SettingsFile>

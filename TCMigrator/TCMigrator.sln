@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCMigrator", "TCMigrator\TCMigrator.csproj", "{A915CFC1-1C4C-46C3-8B0B-3A802157265C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCDataUtilities", "TCMigration\TCDataUtilities.csproj", "{7C8FCA26-9A3E-4BFF-A12D-7BCDBB431C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCUtils", "TCUtils\TCUtils.csproj", "{DE891787-5699-4C71-A501-BD8A4B7ADD0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A915CFC1-1C4C-46C3-8B0B-3A802157265C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A915CFC1-1C4C-46C3-8B0B-3A802157265C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A915CFC1-1C4C-46C3-8B0B-3A802157265C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C8FCA26-9A3E-4BFF-A12D-7BCDBB431C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C8FCA26-9A3E-4BFF-A12D-7BCDBB431C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C8FCA26-9A3E-4BFF-A12D-7BCDBB431C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C8FCA26-9A3E-4BFF-A12D-7BCDBB431C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE891787-5699-4C71-A501-BD8A4B7ADD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE891787-5699-4C71-A501-BD8A4B7ADD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE891787-5699-4C71-A501-BD8A4B7ADD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE891787-5699-4C71-A501-BD8A4B7ADD0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

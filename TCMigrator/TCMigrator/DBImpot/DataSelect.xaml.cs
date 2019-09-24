@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TCMigrator.Data;
 using TCMigrator.DB;
+using TCDataUtilities.Database;
 using TCMigrator.Interfaces;
 
 namespace TCMigrator.DBImpot
@@ -24,7 +25,7 @@ namespace TCMigrator.DBImpot
         private void InitTables()
         {
             Loading.Visibility = Visibility.Visible;
-            IDbConnection con = DBProvider.GetDBConnection();
+            TCDataUtilities.Database.IDbConnection con = DBProvider.GetDBConnection();
             List<String> tableNames = con.getTables();
             foreach (String s in tableNames)
             {
@@ -58,7 +59,7 @@ namespace TCMigrator.DBImpot
             if (Tables.SelectedIndex > -1)
             {
                 var table = (string)Tables.SelectedItem;
-                IDbConnection db = DBProvider.GetDBConnection();
+                TCDataUtilities.Database.IDbConnection db = DBProvider.GetDBConnection();
                 List<String> cols=db.getTableColumns(table);
                 foreach(String s in cols)
                 {
@@ -146,14 +147,14 @@ namespace TCMigrator.DBImpot
             List<String> headers = new List<String>();
             if(AutoHeaders.IsChecked.HasValue && AutoHeaders.IsChecked.Value == true)
             {
-                IDbConnection db = DBProvider.GetDBConnection();
+                TCDataUtilities.Database.IDbConnection db = DBProvider.GetDBConnection();
                 headers = db.AutogenerateHeaderRow(cols);
             }
             return headers;
         }
         private List<String[]> getEntries(String tableName,List<String> cols)
         {
-            IDbConnection con = DBProvider.GetDBConnection();
+            TCDataUtilities.Database.IDbConnection con = DBProvider.GetDBConnection();
             return con.getEntries(tableName, cols);
         }
 
