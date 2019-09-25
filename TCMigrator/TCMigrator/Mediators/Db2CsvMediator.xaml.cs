@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TCMigrator.Data;
+using TCDataUtilities.DataModel;
 using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
 using TCMigrator.Standalone.CSV2TCXML;

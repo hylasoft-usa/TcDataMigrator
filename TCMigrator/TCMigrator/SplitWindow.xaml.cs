@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TCMigrator.Data;
-using TCMigrator.DBImpot;
+using TCDataUtilities.DataModel;
+using TCDataUtilities.Filter;
+using TCMigration.Filter;
 using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
 

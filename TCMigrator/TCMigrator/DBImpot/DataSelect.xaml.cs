@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using TCMigrator.Data;
+
 using TCMigrator.DB;
 using TCDataUtilities.Database;
 using TCMigrator.Interfaces;
+using TCDataUtilities.DataModel;
 
 namespace TCMigrator.DBImpot
 {

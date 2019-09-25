@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TCMigrator.Data;
+using TCDataUtilities.DataModel;
 using TCMigrator.Transform;
 
 namespace TCMigrator.Interfaces

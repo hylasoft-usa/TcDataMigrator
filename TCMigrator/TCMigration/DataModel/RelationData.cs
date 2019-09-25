@@ -36,6 +36,7 @@ namespace TCMigration.DataModel
             ParentType = pt;
             ParentId = pid;
             ParentRevType = prt;
+            ParentRev = pr;
             ChildType = ct;
             ChildId = cid;
             ChildRevType = crt;

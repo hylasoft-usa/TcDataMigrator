@@ -1,5 +1,5 @@
-FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\RelationsImport\DataSelect.xaml;;
-﻿FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Standalone\CSV2TCXML\Csv2Tcxml.xaml;;
-FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\SplitCsv.xaml;;
-FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\SplitWindow.xaml;;
+﻿
+
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DatasetImport\DataSelect.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\DatasetMediator.xaml;;
 

@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TCMigrator.Data;
+using TCDataUtilities.DataModel;
+using TCMigration.Filter;
 using TCMigrator.Enums;
 using TCMigrator.Interfaces;
 using TCMigrator.Transform;
@@ -98,7 +99,14 @@ namespace TCMigrator.DBImpot
             ICsv csv = new CSV.GenericCsv();
             try
             {
-                csv.Write(d);
+                if (d.AreHeadersSet == false || d.Headers.Count < 1)
+                {
+                    csv.WriteNoChange(d);
+                }
+                else
+                {
+                    csv.Write(d);
+                }
                 return true;
             }catch(Exception e)
             {

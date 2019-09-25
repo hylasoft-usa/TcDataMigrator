@@ -57,9 +57,14 @@
     <Compile Include="Database\Oracle\OracleConnection.cs" />
     <Compile Include="Database\Oracle\OracleColumnMap.cs" />
     <Compile Include="Database\SQL\SQLConnection.cs" />
+    <Compile Include="DataModel\DatasetData.cs" />
+    <Compile Include="DataModel\DatasetDataMap.cs" />
     <Compile Include="DataModel\ImportData.cs" />
     <Compile Include="DataModel\RelationData.cs" />
     <Compile Include="DataModel\RelationDataMap.cs" />
+    <Compile Include="Filter\ColumnFilter.cs" />
+    <Compile Include="Filter\CompoundFilter.cs" />
+    <Compile Include="Filter\CompoundFilterType.cs" />
     <Compile Include="Filter\ValueFilter.cs" />
     <Compile Include="Filter\ComparisonFilter.cs" />
     <Compile Include="Filter\FilterType.cs" />

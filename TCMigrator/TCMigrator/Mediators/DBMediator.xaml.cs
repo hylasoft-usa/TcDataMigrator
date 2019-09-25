@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TCMigrator.Data;
+using TCDataUtilities.DataModel;
 using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
 using TCMigrator.Teamcenter;
@@ -60,7 +60,7 @@ namespace TCMigrator.Mediators
         public void retreat()
         {
             step--;
-            ContentWindow.Content = pages[step];
+            LazyLoadClass();
         }
 
         public void updateData(ImportData data)

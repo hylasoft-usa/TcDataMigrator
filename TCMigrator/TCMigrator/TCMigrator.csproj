@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DatasetImport\DataSelect.xaml.cs">
+      <DependentUpon>DataSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\ColumnFilter.cs" />
     <Compile Include="Data\ComparisonFilter.cs" />
     <Compile Include="Data\CompoundFilter.cs" />
@@ -83,8 +86,14 @@
     <Compile Include="Mediators\CSV2TCXMLMediator.xaml.cs">
       <DependentUpon>CSV2TCXMLMediator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mediators\DatasetMediator.xaml.cs">
+      <DependentUpon>DatasetMediator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mediators\Db2CsvMediator.xaml.cs">
       <DependentUpon>Db2CsvMediator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mediators\RelationsMediator.xaml.cs">
+      <DependentUpon>RelationsMediator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\LogSettings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -193,6 +202,10 @@
     <Compile Include="VisualUtilities\TextBoxGenerator.cs" />
     <Compile Include="VisualUtilities\UIMessage.cs" />
     <Compile Include="VisualUtilities\UIMessageType.cs" />
+    <Page Include="DatasetImport\DataSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DBImpot\ConvertAndImport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,11 +254,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Mediators\DatasetMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mediators\Db2CsvMediator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Mediators\DBMediator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mediators\RelationsMediator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

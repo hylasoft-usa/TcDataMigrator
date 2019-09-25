@@ -1,5 +1,6 @@
 ﻿
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\App.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DatasetImport\DataSelect.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\ConvertAndImport.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\DataSelect.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DBImpot\ImportOptions.xaml;;
@@ -9,8 +10,10 @@ FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\DB
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Home.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\MainWindow.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\CSV2TCXMLMediator.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\DatasetMediator.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\Db2CsvMediator.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\DBMediator.xaml;;
+FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Mediators\RelationsMediator.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\RelationsImport\DataSelect.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\SettingsSelect.xaml;;
 FC:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\Settings\CSVSettings.xaml;;
