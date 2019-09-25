@@ -13,12 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCDataUtilities.CSV;
-using TCDataUtilities.Database;
 using TCDataUtilities.DataModel;
 using TCMigration.DataModel;
 using TCMigrator.Interfaces;
 
-namespace TCMigrator.RelationsImport
+namespace TCMigrator.DatasetImport
 {
     /// <summary>
     /// Interaction logic for DataSelect.xaml
@@ -33,31 +32,31 @@ namespace TCMigrator.RelationsImport
         public DataSelect(IPageMediator med)
         {
             InitializeComponent();
-            con= DB.DBProvider.GetDBConnection();
-            boxes = new List<ComboBox>() { ParentIdColumn, ParentRevIdColumn, ParentTypeColumn, ParentRevTypeColumn, ChildIdColumn, ChildRevIdColumn, ChildTypeColumn, ChildRevTypeColumn, RelationType };
+            con = DB.DBProvider.GetDBConnection();
+            boxes = new List<ComboBox>() { ParentIdColumn, ParentRevIdColumn, ParentTypeColumn, ParentRevTypeColumn, VolumeTagColumn, FileNameColumn,OriginalFileNameColumn,SDPathColumn, DatasetTypeColumn, DatasetObjectNameColumn, RelationType };
             tables = con.getTables();
-            
+
             this.med = med;
         }
         private void initTables()
         {
             tables = con.getTables();
-            foreach(String tn in tables)
+            foreach (String tn in tables)
             {
                 Tables.Items.Add(tn);
             }
         }
         private void GetColumns(object sender, SelectionChangedEventArgs e)
         {
-            foreach(ComboBox cb in boxes)
+            foreach (ComboBox cb in boxes)
             {
                 cb.Items.Clear();
             }
             var tn = Tables.Items[Tables.SelectedIndex].ToString();
             columnList = con.getTableColumns(tn);
-            foreach(string col in columnList)
+            foreach (string col in columnList)
             {
-                foreach(ComboBox cb in boxes)
+                foreach (ComboBox cb in boxes)
                 {
                     cb.Items.Add(col);
                 }
@@ -76,21 +75,44 @@ namespace TCMigrator.RelationsImport
         {
             TypeSplitter ts = new TypeSplitter();
             var table = Tables.Text;
-            var map = new RelationDataMap(columnList,ParentIdColumn.SelectedIndex, ParentTypeColumn.SelectedIndex, ChildIdColumn.SelectedIndex, ChildTypeColumn.SelectedIndex, RelationType.SelectedIndex, ParentRevIdColumn.SelectedIndex, ParentRevTypeColumn.SelectedIndex, ChildRevIdColumn.SelectedIndex, ChildRevTypeColumn.SelectedIndex);
+            var map = new DatasetDataMap(
+                columnList,
+                ParentIdColumn.SelectedIndex,
+                ParentTypeColumn.SelectedIndex,
+                DatasetTypeColumn.SelectedIndex,
+                FileNameColumn.SelectedIndex,
+                OriginalFileNameColumn.SelectedIndex,
+                VolumeTagColumn.SelectedIndex,
+                SDPathColumn.SelectedIndex,
+                DatasetObjectNameColumn.SelectedIndex,
+                RelationType.SelectedIndex,
+                ParentRevIdColumn.SelectedIndex,
+                ParentRevTypeColumn.SelectedIndex
+                );
             var entries = con.getEntries(table);
-            List<RelationData> relations = new List<RelationData>();
-            foreach(string[] entry in entries)
+            List<DatasetData> relations = new List<DatasetData>();
+            foreach (string[] entry in entries)
             {
-                relations.Add(new RelationData(entry[map.ParentTypeIndex], entry[map.ParentIdIndex], entry[map.ParentRevTypeIndex], entry[map.ParentRevIdIndex], entry[map.ChildTypeIndex], entry[map.ChildIdIndex], entry[map.ChildRevTypeIndex], entry[map.ChildRevIdIndex], entry[map.RelationTypeIndex]));
+                relations.Add(new DatasetData(
+                    entry[map.ParentIdIndex],
+                    entry[map.ParentTypeIndex],
+                    entry[map.DatasetTypeIndex],
+                    entry[map.NewFileNameIndex],
+                    entry[map.OriginalFileNameIndex],
+                    entry[map.VolumeTagIndex],
+                    entry[map.SdPathIndex],
+                    entry[map.DatasetObjectNameIndex],
+                    entry[map.RelationTypeIndex],
+                    entry[map.ParentRevIdIndex],
+                    entry[map.ParentRevTypeIndex])
+                 );
             }
             ImportData id = new ImportData(table);
             id.Entries = entries;
-            id.AddSplitEntrySets(ts.SplitForRelations(relations.Where(o => o.UsesParentRevision).Where(o => o.UsesChildRevision).ToList()));
-            id.AddSplitEntrySets(ts.SplitForRelations(relations.Where(o => o.UsesParentRevision).Where(o => !o.UsesChildRevision).ToList()));
-            id.AddSplitEntrySets(ts.SplitForRelations(relations.Where(o => !o.UsesParentRevision).Where(o => !o.UsesChildRevision).ToList()));
-            id.AddSplitEntrySets(ts.SplitForRelations(relations.Where(o => !o.UsesParentRevision).Where(o => o.UsesChildRevision).ToList()));
+            id.AddSplitEntrySets(ts.SplitForDatasets(relations));
             med.updateData(id);
             med.advance();
         }
     }
 }
+

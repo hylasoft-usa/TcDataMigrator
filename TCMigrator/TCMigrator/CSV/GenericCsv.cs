@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TCMigrator.Data;
+using TCDataUtilities.DataModel;
 using TCMigrator.Interfaces;
 
 namespace TCMigrator.CSV
@@ -67,13 +67,73 @@ namespace TCMigrator.CSV
                 var splitEntries = data.SplitEntries;
                 for(var x=0; x < splitEntries.Count; x++)
                 {
-                    var csvContent = buildCsv(data.Headers, data.SplitEntries[x]);
+                    var csvContent = buildCsv(data.Headers,data.SplitEntries[x]);
                     var name = dir + Properties.CSVSettings.Default.DefaultCSVName + "_SPLIT_ENTRIES_"+(x + 1) + ".csv";
                     File.WriteAllText(name, csvContent);
                     pathToReturn = dir;
                 }
             }
             return pathToReturn;
+        }
+        public void WriteNoChange(ImportData d)
+        {
+            var dir = Properties.CSVSettings.Default.CSVDirectory + d.InputTitle + @"\";
+            var pathToReturn = "";
+            if (!Directory.Exists(dir + FilterFolder))
+            {
+                Directory.CreateDirectory(dir + FilterFolder);
+            }
+            if (d.FilteredEntries != null && d.FilteredEntries.Count > 0)
+            {
+                int x = 1;
+                foreach (List<String[]> filtered in d.FilteredEntries)
+                {
+                    if (filtered.Count > 0)
+                    {
+                        var csvContent = buildCsv(filtered);
+                        var fullName = dir + FilterFolder + Properties.CSVSettings.Default.DefaultCSVName + "_FILTERED_ENTRIES_" + x + ".csv";
+                        File.WriteAllText(fullName, csvContent);
+                        pathToReturn = dir;
+                        x++;
+                    }
+                }
+            }
+            if (!d.AreEntriesSplit)
+            {
+                var csvContent = buildCsv(d.Entries);
+
+                var fullName = dir + Properties.CSVSettings.Default.DefaultCSVName + ".csv";
+                File.WriteAllText(fullName, csvContent);
+                pathToReturn = dir;
+            }
+            else
+            {
+                var splitEntries = d.SplitEntries;
+                for (var x = 0; x < splitEntries.Count; x++)
+                {
+                    if (d.SplitEntries[x].Count > 0)
+                    {
+                        var csvContent = buildCsv(d.SplitEntries[x]);
+                        var name = dir + Properties.CSVSettings.Default.DefaultCSVName + "_SPLIT_ENTRIES_" + (x + 1) + ".csv";
+                        File.WriteAllText(name, csvContent);
+                        pathToReturn = dir;
+                    }
+                }
+            }
+        }
+        public  String buildCsv(List<String[]> d)
+        {
+            StringBuilder b = new StringBuilder();
+            foreach(string[] s in d)
+            {
+                foreach(string st in s)
+                {
+                    b.Append(st+this.separator);
+                }
+                b.Remove(b.Length - 1, 1);
+                b.Append(Environment.NewLine);
+            }
+            return b.ToString();
         }
         private String buildCsv(List<String> headers,List<String[]>entries) 
         {

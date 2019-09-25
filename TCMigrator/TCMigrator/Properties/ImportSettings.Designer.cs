@@ -25,7 +25,7 @@ namespace TCMigrator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-226367500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-528799347")]
         public string SOURCE_SITE {
             get {
                 return ((string)(this["SOURCE_SITE"]));

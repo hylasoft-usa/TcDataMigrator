@@ -13,31 +13,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TCDataUtilities.DataModel;
+using TCMigrator.DBImpot;
 using TCMigrator.Interfaces;
-using TCMigrator.Standalone.DB2CSV;
 using TCMigrator.Teamcenter;
 using TCMigrator.Transform;
 
 namespace TCMigrator.Mediators
 {
     /// <summary>
-    /// Interaction logic for CSV2TCXMLMediator.xaml
+    /// Interaction logic for DatasetMediator.xaml
     /// </summary>
-    public partial class CSV2TCXMLMediator : Page,IPageMediator
+    public partial class DatasetMediator : IPageMediator
     {
         private List<Page> pages;
         private ImportData data;
+        private CSVConverterOptions options;
         private int step;
-        private CSVConverterOptions o;
+        MainWindow mw;
         private TransformOptions to;
-        private MainWindow mw;
-        public CSV2TCXMLMediator(MainWindow mw)
+        public DatasetMediator(MainWindow mw)
         {
-            this.mw = mw;
             InitializeComponent();
-            data = new ImportData(String.Format("ManualImport_{0}", DateTime.Now));
-            step = 1;
-            ContentWindow.Content = new Csv2Tcxml(this);
+            pages = new List<Page>();
+            pages.Add(new DatasetImport.DataSelect(this));
+            step = 0;
+            ContentWindow.Content = new DatasetImport.DataSelect(this);
+            this.mw = mw;
         }
 
         public void advance()
@@ -53,7 +54,7 @@ namespace TCMigrator.Mediators
 
         public CSVConverterOptions getCurrentImportOptions()
         {
-            return this.o;
+            return this.options;
         }
 
         public void retreat()
@@ -69,17 +70,20 @@ namespace TCMigrator.Mediators
 
         public void updateImportOptions(CSVConverterOptions o)
         {
-            this.o = o;
+            this.options = o;
         }
         private void LazyLoadClass()
         {
             switch (step)
             {
                 case 1:
-                    ContentWindow.Content = new Csv2Tcxml(this);
+                    ContentWindow.Content = new DBImpot.Transform(this);
                     break;
                 case 2:
-                    ContentWindow.Content = new Standalone.CSV2TCXML.Convert(this);
+                    ContentWindow.Content = new DBImpot.Import(this);
+                    break;
+                case 3:
+                    ContentWindow.Content = new ConvertAndImport(this);
                     break;
             }
         }

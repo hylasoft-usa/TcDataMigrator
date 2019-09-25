@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TCMigrator.Data;
+using TCDataUtilities.Filter;
+using TCMigration.Filter;
 
 namespace TCMigrator.DBImpot
 {
@@ -100,7 +101,7 @@ namespace TCMigrator.DBImpot
         #region SingleFilter
         private void AddSingleFilter(object sender,RoutedEventArgs e) {
             var col = columnName.Text;
-            var type = (Enums.FilterType)Enum.Parse(typeof(Enums.FilterType), FilterType.Text);
+            var type = (FilterType)Enum.Parse(typeof(FilterType), FilterType.Text);
             if (singleFilterType.SelectedIndex == 0)
             {
                 //add Comparison Column
@@ -108,7 +109,7 @@ namespace TCMigrator.DBImpot
                 var i2 = SingleFilterCol2.SelectedIndex;
                 var n1 = columnName.Text;
                 var n2 = SingleFilterCol2.Text;
-                var filtertype = (Enums.FilterType)Enum.Parse(typeof(Enums.FilterType), FilterType.Text);
+                var filtertype = (FilterType)Enum.Parse(typeof(FilterType), FilterType.Text);
                 comparisons.Add(new ComparisonFilter(i1, i2, n1, n2, filtertype));
                 SingleFilterDisplay.Items.Add(new SingleFilterDisplay(n1, filtertype.ToString(), n2));
             }
@@ -197,7 +198,7 @@ namespace TCMigrator.DBImpot
         {
             if (current == null)
             {
-                var curFilterType = (Enums.CompoundFilterType)Enum.Parse(typeof(Enums.CompoundFilterType), compoundJoinType.Text);
+                var curFilterType = (CompoundFilterType)Enum.Parse(typeof(Enums.CompoundFilterType), compoundJoinType.Text);
                 current = new CompoundFilter(curFilterType);
             }
             addFilterToGroup();
@@ -240,7 +241,7 @@ namespace TCMigrator.DBImpot
         {
             var col = compoundColumnName.Text;
             var index = compoundColumnName.SelectedIndex;
-            var type = (Enums.FilterType)Enum.Parse(typeof(Enums.FilterType), compoundFilterType.Text);
+            var type = (FilterType)Enum.Parse(typeof(FilterType), compoundFilterType.Text);
             var val = compoundFilterText.Text;
             return new ColumnFilter(index, col, type, val);
         }

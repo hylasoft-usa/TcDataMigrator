@@ -127,3 +127,9 @@ C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\bin\Debug\TCMigration.dll.config
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\RelationsImport\DataSelect.g.cs
 C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\RelationsImport\DataSelect.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\RelationsMediator.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\RelationsMediator.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DatasetImport\DataSelect.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\DatasetMediator.g.cs
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\DatasetImport\DataSelect.baml
+C:\Users\Administrator\Documents\GitHub\TcDataMigrator\TCMigrator\TCMigrator\obj\Debug\Mediators\DatasetMediator.baml

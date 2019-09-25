@@ -1,5 +1,5 @@
-﻿<Page x:Class="TCMigrator.RelationsImport.DataSelect"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Page x:Class="TCMigrator.DatasetImport.DataSelect"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -12,20 +12,19 @@
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="Select a Table" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" Margin="5">
+            <GroupBox Header="Select a Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
                 <ComboBox HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" x:Name="Tables" SelectionChanged="GetColumns" DropDownOpened="checkTablesLoaded" />
             </GroupBox>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -35,47 +34,55 @@
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <GroupBox Header="Parent Properties">
+            <GroupBox Header="Parent Properties" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header="Parent Object Id Column" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch">
+                    <GroupBox Header="Parent Object Id Column" HorizontalAlignment="Stretch" Margin="5,0,5,0" VerticalAlignment="Stretch">
                         <ComboBox x:Name="ParentIdColumn"/>
-                    </GroupBox>                    
-                    <GroupBox Header="Parent Object Type Column" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+                    </GroupBox>
+                    <GroupBox Header="Parent Object Type Column" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5,0,5,0" VerticalAlignment="Stretch">
                         <ComboBox x:Name="ParentTypeColumn"/>
                     </GroupBox>
-                    <GroupBox Header="Parent Object Revision Id Column" HorizontalAlignment="Stretch" Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                    <GroupBox Header="Parent Object Revision Id Column" HorizontalAlignment="Stretch" Grid.Row="2" Margin="5,0,5,0" VerticalAlignment="Stretch">
                         <ComboBox x:Name="ParentRevIdColumn"/>
                     </GroupBox>
-                    <GroupBox Header="Parent Object Revision Type Column" HorizontalAlignment="Stretch" Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
+                    <GroupBox Header="Parent Object Revision Type Column" HorizontalAlignment="Stretch" Grid.Row="3" Margin="5,0,5,0" VerticalAlignment="Stretch">
                         <ComboBox x:Name="ParentRevTypeColumn"/>
+                    </GroupBox>
+                    <GroupBox Header="Volume Tag Column" HorizontalAlignment="Stretch" Grid.Row="4" Margin="5,0,5,0" VerticalAlignment="Stretch">
+                        <ComboBox x:Name="VolumeTagColumn"/>
                     </GroupBox>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Column="2" Header="Additional Properties" Margin="5">
+            <GroupBox Grid.Column="2" Header="Dataset Properties" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Header="Child Object Id Column" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch">
-                        <ComboBox x:Name="ChildIdColumn"/>
+                    <GroupBox Header="Dataset Type Column" HorizontalAlignment="Stretch" Margin="5,0,5,0" VerticalAlignment="Stretch">
+                        <ComboBox x:Name="DatasetTypeColumn"/>
                     </GroupBox>
-                    <GroupBox Header="Child Object Type Column" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
-                        <ComboBox x:Name="ChildTypeColumn"/>
+                    <GroupBox Header="Dataset Object Name Column" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5,0,5,0" VerticalAlignment="Stretch">
+                        <ComboBox x:Name="DatasetObjectNameColumn"/>
                     </GroupBox>
-                    <GroupBox Header="Child Object Revision Id Column" HorizontalAlignment="Stretch" Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
-                        <ComboBox x:Name="ChildRevIdColumn"/>
+                    <GroupBox Header="File Name Column" HorizontalAlignment="Stretch" Grid.Row="2" Margin="5,0,5,0" VerticalAlignment="Stretch">
+                        <ComboBox x:Name="FileNameColumn"/>
                     </GroupBox>
-                    <GroupBox Header="Child Object Revision Type Column" HorizontalAlignment="Stretch" Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
-                        <ComboBox x:Name="ChildRevTypeColumn"/>
+                    <GroupBox Header="Original File Name Column" HorizontalAlignment="Stretch" Grid.Row="3" Margin="5,0,5,0" VerticalAlignment="Stretch">
+                        <ComboBox x:Name="OriginalFileNameColumn"/>
+                    </GroupBox>
+                    <GroupBox Header="SD Path Column" Grid.Row="4" Margin="5,0,5,0">
+                        <ComboBox x:Name="SDPathColumn"></ComboBox>
                     </GroupBox>
                 </Grid>
             </GroupBox>

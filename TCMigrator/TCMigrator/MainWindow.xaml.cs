@@ -46,6 +46,14 @@ namespace TCMigrator
         {
             Main.Content = new DBSettings(this);
         }
+        private void DoRelations(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new RelationsMediator(this);
+        }
+        private void DoDatasets(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new DatasetMediator(this);
+        }
         private void ShowCSVSettings(object sender,RoutedEventArgs e)
         {
             Main.Content = new CSVSettings(this);

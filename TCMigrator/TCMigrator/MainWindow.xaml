@@ -27,6 +27,8 @@
                     <MenuItem Header="_DB2CSV" Click="Db2Csv" Foreground="Black"></MenuItem>
                     <MenuItem Header="_CSV2TCXML" Click="TCXML" Foreground="Black"></MenuItem>
                     <MenuItem Header="_TCXML Import" Click="Import" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_Relations Import" Click="DoRelations" Foreground="Black"></MenuItem>
+                    <MenuItem Header="_Dataset Import" Click="DoDatasets" Foreground="Black"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Settings">
                     <MenuItem Header="_Logging Settings" Click="ShowLoggingSettings" Foreground="Black"></MenuItem>

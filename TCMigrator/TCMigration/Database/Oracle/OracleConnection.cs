@@ -136,7 +136,11 @@ namespace TCDataUtilities.Database.Oracle
                     var arr = new List<String>();
                     for (var x = 0; x < ColCount; x++)
                     {
-                        arr.Add(reader.GetString(x));
+                        if (reader.IsDBNull(x))
+                        {
+                            arr.Add("");
+                        }
+                        else { arr.Add(reader.GetString(x)); }
                     }
                     entries.Add(arr.ToArray());
                 }
